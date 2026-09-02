@@ -1,7 +1,14 @@
+import { motion } from "framer-motion";
+
 export default function About() {
   return (
     <section className="min-h-screen flex items-center justify-center px-4">
-      <div className="border-2 border-arcade-cyan rounded-lg p-6 md:p-8 max-w-md w-full bg-black/30">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6 }}
+        className="border-2 border-arcade-cyan rounded-lg p-6 md:p-8 max-w-md w-full bg-black/30">
         <h2 className="font-pixel text-arcade-cyan text-lg mb-6 text-center">
           Player Stats
         </h2>
@@ -20,7 +27,7 @@ export default function About() {
             net-sentry-backend & Cassian
           </p>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
