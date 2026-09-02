@@ -1,4 +1,4 @@
-import { profiles } from '../data/profiles'
+import { profiles } from "../data/profiles";
 
 export default function CodingProfiles() {
   return (
@@ -11,15 +11,14 @@ export default function CodingProfiles() {
         {profiles.map((p) => (
           <a
             key={p.platform}
-            href={p.url || '#'}
+            href={p.url || "#"}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-pixel text-xs text-arcade-magenta border-2 border-arcade-magenta rounded-full px-4 py-3 hover:bg-arcade-magenta hover:text-black transition"
-          >
+            className="font-pixel text-xs text-arcade-magenta border-2 border-arcade-magenta rounded-full px-4 py-3 hover:bg-arcade-magenta hover:text-black transition">
             {p.platform}
           </a>
         ))}
       </div>
     </section>
-  )
+  );
 }
