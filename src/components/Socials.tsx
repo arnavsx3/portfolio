@@ -1,7 +1,7 @@
 const socials = [
   { label: "GitHub", url: "https://github.com/arnavsx3" },
-  { label: "LinkedIn", url: "" },
-  { label: "Email", url: "" },
+  { label: "LinkedIn", url: "https://in.linkedin.com/in/arnavsx3" },
+  { label: "Email", url: "mailto:arnavsx3dev@gmail.com" },
 ];
 
 export default function Socials() {
