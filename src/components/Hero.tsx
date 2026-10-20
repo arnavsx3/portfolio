@@ -1,22 +1,49 @@
-import { motion } from "framer-motion";
+import Icon from './Icon'
+import Signal from './Signal'
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center text-center px-4">
-      <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="font-pixel text-arcade-cyan text-2xl md:text-4xl mb-4">
-        Arnav
-      </motion.h1>
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        className="text-arcade-magenta text-sm md:text-base">
-        CS + AI Student · Builder of things
-      </motion.p>
+    <section className="hero wrap" aria-labelledby="hero-heading">
+      <div className="hero-copy">
+        <p className="eyebrow">
+          <span className="tiny-star">✳</span> CS + AI STUDENT. PERPETUAL
+          BUILDER.
+        </p>
+        <h1 id="hero-heading">
+          Built from
+          <br />
+          <span className="hero-curiosity">
+            curiosity<span className="lime">.</span>
+            <span className="hero-star" aria-hidden="true">
+              ✳
+            </span>
+          </span>
+        </h1>
+        <p className="hero-intro">
+          Hey, I’m Arnav. I build cloud-native systems,
+          <br className="desktop-break" /> useful tools, and the occasional
+          beautiful distraction.
+        </p>
+        <div className="hero-actions">
+          <a href="#work" className="button button-lime">
+            Explore my work <Icon name="down" />
+          </a>
+          <a className="text-link" href="#about">
+            A little about me <span>↗</span>
+          </a>
+        </div>
+        <div className="hero-foot mono">
+          <span className="status-dot" /> ALWAYS BUILDING SOMETHING{' '}
+          <span className="hero-foot-line" />
+        </div>
+      </div>
+      <Signal />
+      <div className="hero-bottom mono">
+        <span>BACKENDS / CLOUD / CREATIVE CODE</span>
+        <a href="#work">
+          SCROLL TO EXPLORE <Icon name="down" />
+        </a>
+      </div>
     </section>
-  );
+  )
 }

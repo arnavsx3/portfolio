@@ -1,31 +1,79 @@
-const socials = [
-  { label: "GitHub", url: "https://github.com/arnavsx3" },
-  { label: "LinkedIn", url: "https://in.linkedin.com/in/arnavsx3" },
-  {
-    label: "Email",
-    url: "https://mail.google.com/mail/?view=cm&to=arnavsx3dev@gmail.com",
-  },
-];
+import { useEffect, useRef, useState } from 'react'
+import { contact } from '../data/profiles'
+import Icon from './Icon'
 
 export default function Socials() {
+  const [copyState, setCopyState] = useState<'idle' | 'copied' | 'failed'>(
+    'idle',
+  )
+  const reset = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
+  useEffect(() => () => clearTimeout(reset.current), [])
+  async function copyEmail() {
+    try {
+      await navigator.clipboard.writeText(contact.email)
+      setCopyState('copied')
+    } catch {
+      setCopyState('failed')
+    }
+    clearTimeout(reset.current)
+    reset.current = setTimeout(() => setCopyState('idle'), 4000)
+  }
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-4">
-      <h2 className="font-pixel text-arcade-magenta text-lg mb-10 text-center">
-        Connect
-      </h2>
-
-      <div className="flex gap-6">
-        {socials.map((s) => (
+    <section id="contact" className="contact" aria-labelledby="contact-heading">
+      <div className="wrap">
+        <div className="section-topline mono">
+          <span>04 / NEXT GOOD IDEA</span>
+          <span>LET’S MAKE SOMETHING.</span>
+        </div>
+        <div className="contact-heading-row">
+          <h2 id="contact-heading">
+            Got a good
+            <br />
+            “what if?”
+          </h2>
           <a
-            key={s.label}
-            href={s.url || "#"}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-pixel text-xs text-arcade-yellow border-2 border-arcade-yellow rounded-lg px-4 py-3 hover:bg-arcade-yellow hover:text-black transition">
-            {s.label}
+            className="contact-arrow"
+            href={`mailto:${contact.email}`}
+            aria-label={`Email Arnav at ${contact.email}`}
+          >
+            <Icon />
           </a>
-        ))}
+        </div>
+        <div className="contact-bottom">
+          <div>
+            <p>
+              A project, a collaboration, or a wonderfully weird idea.
+              <br />
+              My inbox is a good place to start.
+            </p>
+            <div className="email-row">
+              <a href={`mailto:${contact.email}`}>{contact.email}</a>
+              <button onClick={copyEmail} aria-label="Copy email address">
+                <Icon name={copyState === 'copied' ? 'check' : 'copy'} />
+              </button>
+            </div>
+            <span className="copy-status" role="status">
+              {copyState === 'copied'
+                ? 'Email copied.'
+                : copyState === 'failed'
+                  ? 'Select the address above to copy it, or click to open your email app.'
+                  : ''}
+            </span>
+          </div>
+          <div className="contact-socials">
+            <a href={contact.github} target="_blank" rel="noopener noreferrer">
+              GitHub <Icon />
+            </a>
+            <a
+              href={contact.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn <Icon />
+            </a>
+          </div>
+        </div>
       </div>
     </section>
-  );
+  )
 }

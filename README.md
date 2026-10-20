@@ -1,75 +1,45 @@
-# React + TypeScript + Vite
+# Arnav — Built from curiosity.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A personal portfolio for cloud-native systems, developer tools, and creative experiments.
 
-Currently, two official plugins are available:
+**Live:** https://arnavsx3.github.io/portfolio/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Development
 
-## React Compiler
+Requires Node.js 24 and npm.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```sh
+npm ci
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Vite serves the site at `http://localhost:5173/portfolio/`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```sh
+npm run build         # TypeScript checks and production build
+npm run preview       # Serve the production build locally
+npm run format        # Apply the shared code style
+npm run format:check  # Verify formatting without changing files
 ```
+
+## Content and structure
+
+- `src/data/projects.ts`: curated projects, descriptions, categories, technology tags, and GitHub links. Update this file to add or retire a project.
+- `src/data/profiles.ts`: email and social links.
+- `src/components/Signal.tsx`: interactive build / ship / observe illustration.
+- `src/components/ProjectVisual.tsx`: original SVG and CSS illustrations of project concepts, rather than screenshots or live telemetry.
+- `src/components/Playground.tsx`: browser-local timing challenge inspired by Drift. It uses a monotonic clock; no results leave the browser.
+- `src/index.css`: responsive layout, design tokens, and reduced-motion rules.
+- `public/fonts`: locally hosted, openly licensed fonts and their licenses.
+
+Project descriptions are curated from the corresponding public repositories. OriginFence is credited as a team project and a prototype. There are no placeholder destinations, fabricated credentials, runtime GitHub API calls, analytics, or client-side secrets.
+
+## Accessibility and behavior
+
+Semantic landmarks, a skip link, keyboard-operable buttons, visible focus rings, filter announcements, descriptive project links, reduced-motion support, and a global pause control for decorative animation. Email copying reports success or offers a fallback when clipboard access is unavailable. The timing challenge is optional and has no impact on navigation or project access.
+
+## Publishing
+
+GitHub Actions checks formatting and builds pull requests. Pushes to `main` (or a manual workflow run on `main`) build and publish to the existing GitHub Pages site. The `/portfolio/` base is configured in `vite.config.ts`; update the Vite base and canonical/social URLs together if the hosting path changes.
+
+Use focused commits on a feature branch and open a pull request into `main`. Preview changes locally before merging.

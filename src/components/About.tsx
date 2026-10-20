@@ -1,33 +1,90 @@
-import { motion } from "framer-motion";
+import { contact } from '../data/profiles'
+import Icon from './Icon'
 
+const interests = [
+  {
+    n: '01',
+    title: 'Under the hood',
+    body: 'Backends, distributed systems, and the decisions that make them tick.',
+    tags: 'Go / Python / PostgreSQL',
+  },
+  {
+    n: '02',
+    title: 'From code to cloud',
+    body: 'Containers, pipelines, and infrastructure that make shipping repeatable.',
+    tags: 'Docker / Kubernetes / AWS / Terraform',
+  },
+  {
+    n: '03',
+    title: 'Room to experiment',
+    body: 'A different language. A strange idea. A small tool that scratches an itch.',
+    tags: 'Rust / Elixir / C++ / TypeScript',
+  },
+]
 export default function About() {
   return (
-    <section className="min-h-screen flex items-center justify-center px-4">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6 }}
-        className="border-2 border-arcade-cyan rounded-lg p-6 md:p-8 max-w-md w-full bg-black/30">
-        <h2 className="font-pixel text-arcade-cyan text-lg mb-6 text-center">
-          Player Stats
-        </h2>
-        <div className="space-y-3 text-sm">
-          <p>
-            <span className="text-arcade-yellow">Name:</span> Arnav
-          </p>
-          <p>
-            <span className="text-arcade-yellow">Class:</span> CS + AI Student
-          </p>
-          <p>
-            <span className="text-arcade-yellow">Level:</span> 3rd Year
-          </p>
-          <p>
-            <span className="text-arcade-yellow">Current Quest:</span> Building
-            net-sentry-backend & Cassian
-          </p>
+    <section
+      id="about"
+      className="about section"
+      aria-labelledby="about-heading"
+    >
+      <div className="wrap">
+        <div className="section-topline mono">
+          <span>02 / THE PERSON BEHIND THE COMMITS</span>
+          <span>STILL CURIOUS.</span>
         </div>
-      </motion.div>
+        <div className="about-grid">
+          <div className="about-intro">
+            <span className="about-asterisk" aria-hidden="true">
+              ✳
+            </span>
+            <h2 id="about-heading">
+              The fun is in
+              <br />
+              <span className="muted">figuring it out.</span>
+            </h2>
+            <p>
+              I’m Arnav, a CS + AI student drawn to cloud-native apps and the
+              pipelines that ship them.
+            </p>
+            <p>
+              I like following an idea all the way down: from the interface to
+              the backend, the container, and the infrastructure underneath.
+              Sometimes that becomes a network observability tool. Sometimes, a
+              tiny world of falling sand.
+            </p>
+            <a
+              className="text-link"
+              href={contact.github}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Follow the rabbit hole <Icon />
+            </a>
+          </div>
+          <div className="interest-list">
+            {interests.map((interest) => (
+              <div className="interest" key={interest.n}>
+                <span className="mono interest-number">{interest.n}</span>
+                <div>
+                  <h3>{interest.title}</h3>
+                  <p>{interest.body}</p>
+                  <span className="mono interest-tags">{interest.tags}</span>
+                </div>
+                <Icon name="plus" />
+              </div>
+            ))}
+            <a
+              href={contact.leetcode}
+              className="practice-link mono"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              A LITTLE PROBLEM-SOLVING ON LEETCODE <Icon />
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
-  );
+  )
 }
