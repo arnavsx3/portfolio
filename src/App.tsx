@@ -2,13 +2,15 @@ import { useState } from 'react'
 import Hero from './components/Hero'
 import About from './components/About'
 import Projects from './components/Projects'
-import Playground from './components/Playground'
+import Certifications from './components/Certifications'
+import type { WorkTab } from './components/Projects'
 import Socials from './components/Socials'
 import Footer from './components/Footer'
 import Icon from './components/Icon'
 
 export default function App() {
   const [paused, setPaused] = useState(false)
+  const [workTab, setWorkTab] = useState<WorkTab>('featured')
   return (
     <div id="top" data-motion={paused ? 'paused' : 'playing'}>
       <a className="skip-link" href="#main">
@@ -20,9 +22,16 @@ export default function App() {
             arnav<span>✳</span>
           </a>
           <nav aria-label="Main navigation">
-            <a href="#work">Work</a>
-            <a href="#about">About</a>
-            <a href="#playground">Play</a>
+            <a href="#work" onClick={() => setWorkTab('featured')}>
+              Work
+            </a>
+            <a href="#work" onClick={() => setWorkTab('opensource')}>
+              Open source
+            </a>
+            <a className="nav-about" href="#about">
+              About
+            </a>
+            <a href="#certifications">Certs</a>
           </nav>
           <div className="nav-actions">
             <button
@@ -49,17 +58,17 @@ export default function App() {
           <div className="wrap ticker-inner">
             <span>CLOUD NATIVE</span>
             <i>✳</i>
-            <span>BUILT TO LEARN</span>
+            <span>INFRASTRUCTURE AS CODE</span>
             <i>✳</i>
-            <span>SYSTEMS THINKING</span>
+            <span>CI / CD</span>
             <i>✳</i>
-            <span>CREATIVE CODE</span>
+            <span>OBSERVABILITY</span>
             <i>✳</i>
           </div>
         </div>
-        <Projects />
+        <Projects activeTab={workTab} onTabChange={setWorkTab} />
         <About />
-        <Playground />
+        <Certifications />
         <Socials />
       </main>
       <Footer />
