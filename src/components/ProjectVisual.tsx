@@ -1,202 +1,359 @@
 import type { ProjectVisual as VisualKind } from '../data/projects'
 
 export default function ProjectVisual({ kind }: { kind: VisualKind }) {
-  if (kind === 'kessel')
-    return (
-      <div className="project-visual visual-kessel" aria-hidden="true">
-        <div className="visual-label mono">COUNTERFACTUAL RACING / KESSEL</div>
-        <svg viewBox="0 0 560 280" fill="none">
-          <g transform="rotate(-12 280 140)">
+  return (
+    <div className={`project-visual visual-${kind}`} aria-hidden="true">
+      {kind === 'cassian' && (
+        <>
+          <div className="visual-label mono">CASSIAN / RECOVERY BY DESIGN</div>
+          <svg viewBox="0 0 560 280" fill="none">
             <path
-              d="M159 80h229c65 0 71 98 5 104H165c-79 0-73-104-6-104Z"
-              stroke="#ff966c"
-              strokeWidth="30"
-              opacity=".12"
+              d="M90 140h115m150 0h115M280 80v120"
+              stroke="#c7eaa8"
+              strokeOpacity=".3"
+              strokeDasharray="4 5"
             />
+            <rect
+              x="38"
+              y="111"
+              width="110"
+              height="58"
+              rx="4"
+              fill="#253a28"
+              stroke="#92bba0"
+              strokeOpacity=".4"
+            />
+            <text
+              x="93"
+              y="138"
+              textAnchor="middle"
+              fill="#d6e9c6"
+              className="visual-node"
+            >
+              SPOT
+            </text>
+            <text
+              x="93"
+              y="154"
+              textAnchor="middle"
+              fill="#8fab8d"
+              className="diagram-label"
+            >
+              WORKER / GEN 1
+            </text>
+            <rect
+              x="412"
+              y="111"
+              width="110"
+              height="58"
+              rx="4"
+              fill="#c5f98d"
+            />
+            <text
+              x="467"
+              y="138"
+              textAnchor="middle"
+              fill="#21311c"
+              className="visual-node"
+            >
+              ON-DEMAND
+            </text>
+            <text
+              x="467"
+              y="154"
+              textAnchor="middle"
+              fill="#3d582a"
+              className="diagram-label"
+            >
+              RESUME / GEN 2
+            </text>
             <path
-              d="M159 80h229c65 0 71 98 5 104H165c-79 0-73-104-6-104Z"
-              stroke="#ff966c"
+              d="m280 77 53 30v61l-53 30-53-30v-61Z"
+              fill="#3b5332"
+              stroke="#c5f98d"
               strokeWidth="1.5"
             />
             <path
-              d="M159 80h229c65 0 71 98 5 104H165c-79 0-73-104-6-104Z"
-              stroke="#ffd3b2"
-              strokeWidth="4"
-              className="race-line"
+              d="m227 107 53 30 53-30m-53 30v61"
+              stroke="#c5f98d"
+              strokeOpacity=".5"
             />
+            <text
+              x="280"
+              y="121"
+              textAnchor="middle"
+              fill="#e3f9c5"
+              className="visual-node"
+            >
+              EKS
+            </text>
+            <rect
+              x="231"
+              y="217"
+              width="98"
+              height="23"
+              rx="3"
+              stroke="#7f9b6a"
+            />
+            <text
+              x="280"
+              y="232"
+              textAnchor="middle"
+              fill="#c7e3a6"
+              className="diagram-label"
+            >
+              S3 CHECKPOINT
+            </text>
             <path
-              d="M230 80h100M230 184h100"
-              stroke="#ff966c"
-              strokeWidth="1"
-              strokeDasharray="3 4"
+              d="M148 140h77m110 0h77"
+              stroke="#d4fb64"
+              strokeWidth="2"
+              className="signal-travel"
             />
-            <path d="M331 60v41m-6-41v41" stroke="#ffd9bc" strokeWidth="2" />
-          </g>
-          <text
-            x="280"
-            y="139"
-            textAnchor="middle"
-            fill="#ffbb8e"
-            className="visual-large-text"
-          >
-            WHAT IF?
-          </text>
-          <text
-            x="280"
-            y="159"
-            textAnchor="middle"
-            fill="#b27d60"
-            className="diagram-label"
-          >
-            SAME RACE. ANOTHER POSSIBILITY.
-          </text>
-        </svg>
-        <div className="visual-footer mono">
-          <span>01 → N WORKERS</span>
-          <span>DETERMINISTIC BY DESIGN ↗</span>
-        </div>
-      </div>
-    )
-  if (kind === 'network')
-    return (
-      <div className="project-visual visual-network" aria-hidden="true">
-        <div className="visual-label mono">
-          NETWORK OBSERVABILITY / NETSENTRY
-        </div>
-        <svg viewBox="0 0 560 280" fill="none">
-          <path
-            d="M60 60h440M60 110h440M60 160h440M60 210h440M110 40v190M195 40v190M280 40v190M365 40v190M450 40v190"
-            stroke="#b7db83"
-            opacity=".1"
-          />
-          <path
-            d="m60 168 55-7 34-52 30 79 31-52 35 6 31-64 28 92 34-35 29 7 28-48 40 25 35-7"
-            stroke="#c8f67d"
-            strokeWidth="2"
-          />
-          <path
-            d="m60 168 55-7 34-52 30 79 31-52 35 6 31-64 28 92 34-35 29 7 28-48 40 25 35-7"
-            stroke="#f3ffe4"
-            strokeWidth="4"
-            className="network-pulse"
-          />
-          <circle cx="276" cy="78" r="6" fill="#c8f67d" />
-          <circle cx="276" cy="78" r="15" stroke="#c8f67d" opacity=".3" />
-          <rect x="299" y="49" width="118" height="28" rx="3" fill="#26351e" />
-          <text
-            x="358"
-            y="67"
-            textAnchor="middle"
-            fill="#c8f67d"
-            className="diagram-label"
-          >
-            FIND THE SIGNAL
-          </text>
-        </svg>
-        <div className="visual-footer mono">
-          <span>INGEST → STORE → OBSERVE</span>
-          <span>WEBSOCKET STREAM ↗</span>
-        </div>
-      </div>
-    )
-  if (kind === 'fence')
-    return (
-      <div className="project-visual visual-fence" aria-hidden="true">
-        <div className="visual-label mono">RUNTIME POLICY / ORIGINFENCE</div>
-        <div className="fence-flow mono">
-          <span>AGENT</span>
-          <i>→</i>
-          <span>PROCESS</span>
-          <i>→</i>
-          <span className="fence-block">POLICY</span>
-        </div>
-        <div className="fence-verdict mono">
-          <i className="status-dot" /> TRACE. EVALUATE. EXPLAIN.
-        </div>
-        <div className="fence-lines">
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
-        </div>
-      </div>
-    )
-  if (kind === 'drift')
-    return (
-      <div className="project-visual visual-drift" aria-hidden="true">
-        <div className="visual-label mono">A FEELING FOR TIME / DRIFT</div>
-        <div className="drift-clock">
-          <span>
-            7<span className="clock-decimal">.00</span>
-            <small>s</small>
-          </span>
-        </div>
-        <span className="drift-orbit one" />
-        <span className="drift-orbit two" />
-        <div className="visual-footer mono">
-          <span>NO CLOCK. JUST INSTINCT.</span>
-          <span>TRUST YOUR TIMING ↗</span>
-        </div>
-      </div>
-    )
-  if (kind === 'sand')
-    return (
-      <div className="project-visual visual-sand" aria-hidden="true">
-        <div className="visual-label mono">A TINY WORLD / DUNEFALL</div>
-        <svg viewBox="0 0 560 280">
-          <defs>
-            <pattern
-              id="sand-dots"
-              width="8"
-              height="8"
-              patternUnits="userSpaceOnUse"
+          </svg>
+          <div className="visual-footer mono">
+            <span>SPOT → CHECKPOINT → RECOVER</span>
+            <span>ILLUSTRATED ARCHITECTURE</span>
+          </div>
+        </>
+      )}
+      {kind === 'synapse' && (
+        <>
+          <div className="visual-label mono">SYNAPSE / COMMIT TO CLUSTER</div>
+          <div className="delivery-steps mono">
+            <span>
+              GIT<small>commit</small>
+            </span>
+            <i>→</i>
+            <span>
+              CI<small>verify</small>
+            </span>
+            <i>→</i>
+            <span>
+              ECR<small>publish</small>
+            </span>
+            <i>→</i>
+            <span>
+              EKS<small>deploy</small>
+            </span>
+          </div>
+          <div className="deploy-bars">
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+          </div>
+          <div className="visual-footer mono">
+            <span>IMMUTABLE IMAGE / HELM DELIVERY</span>
+            <span>ILLUSTRATED PIPELINE</span>
+          </div>
+        </>
+      )}
+      {kind === 'snapshots' && (
+        <>
+          <div className="visual-label mono">MORLANA / RECOVERABLE HISTORY</div>
+          <svg viewBox="0 0 560 280" fill="none">
+            <path
+              d="M135 140h290M210 140v-45m140 45v45"
+              stroke="#d5b8f1"
+              strokeOpacity=".4"
+            />
+            <rect
+              x="92"
+              y="111"
+              width="86"
+              height="58"
+              rx="4"
+              fill="#302737"
+              stroke="#d5b8f1"
+              strokeOpacity=".6"
+            />
+            <rect
+              x="237"
+              y="111"
+              width="86"
+              height="58"
+              rx="4"
+              fill="#382b43"
+              stroke="#d5b8f1"
+              strokeOpacity=".6"
+            />
+            <rect
+              x="382"
+              y="111"
+              width="86"
+              height="58"
+              rx="4"
+              fill="#d5b8f1"
+            />
+            <text
+              x="135"
+              y="146"
+              textAnchor="middle"
+              fill="#d5b8f1"
+              className="visual-node"
             >
-              <rect width="5" height="5" fill="#f3c27d" />
-            </pattern>
-            <pattern
-              id="water-dots"
-              width="8"
-              height="8"
-              patternUnits="userSpaceOnUse"
+              SNAP 01
+            </text>
+            <text
+              x="280"
+              y="146"
+              textAnchor="middle"
+              fill="#d5b8f1"
+              className="visual-node"
             >
-              <rect width="5" height="5" fill="#6998a9" />
-            </pattern>
-          </defs>
-          <path
-            d="M0 230 72 230 72 210 104 210 104 183 128 183 128 155 152 155 152 133 176 133 176 109 192 109 192 133 216 133 216 157 240 157 240 179 264 179 264 203 296 203 296 230H560v50H0Z"
-            fill="url(#sand-dots)"
-          />
-          <path d="M296 202h264v78H296Z" fill="url(#water-dots)" />
-          <path d="M179 40h7v12h-7zm0 24h7v7h-7zm8 24h7v7h-7z" fill="#f3c27d" />
-        </svg>
-        <div className="visual-footer mono">
-          <span>SAND + WATER + A LITTLE CHAOS</span>
-          <span>C++20 ↗</span>
-        </div>
-      </div>
-    )
-  return (
-    <div className="project-visual visual-logs" aria-hidden="true">
-      <div className="visual-label mono">NOISE → SIGNAL / LOGFOLD</div>
-      <div className="log-terminal mono">
-        <p>
-          <span>$</span> logfold app.log
-        </p>
-        <p className="log-muted">Reading between the lines…</p>
-        <p>
-          <b>3×</b> user &lt;NUM&gt; logged in from &lt;IP&gt;
-        </p>
-        <p>
-          <b>2×</b> timeout after &lt;NUM&gt;s on db-&lt;NUM&gt;
-        </p>
-        <p>
-          <b>1×</b> request &lt;UUID&gt; finished
-        </p>
-        <span className="terminal-cursor" />
-      </div>
+              SNAP 02
+            </text>
+            <text
+              x="425"
+              y="146"
+              textAnchor="middle"
+              fill="#292030"
+              className="visual-node"
+            >
+              RESTORE
+            </text>
+            <circle cx="210" cy="95" r="5" fill="#d5b8f1" />
+            <circle cx="350" cy="185" r="5" fill="#d5b8f1" />
+            <text
+              x="210"
+              y="78"
+              textAnchor="middle"
+              fill="#a18eb4"
+              className="diagram-label"
+            >
+              SHA-256 OBJECTS
+            </text>
+            <text
+              x="350"
+              y="211"
+              textAnchor="middle"
+              fill="#a18eb4"
+              className="diagram-label"
+            >
+              VERIFY BEFORE PUBLISH
+            </text>
+          </svg>
+          <div className="visual-footer mono">
+            <span>CONTENT-ADDRESSED / INTEGRITY-CHECKED</span>
+            <span>LOCAL FIRST ↗</span>
+          </div>
+        </>
+      )}
+      {kind === 'kessel' && (
+        <>
+          <div className="visual-label mono">
+            COUNTERFACTUAL RACING / KESSEL
+          </div>
+          <svg viewBox="0 0 560 280" fill="none">
+            <g transform="rotate(-12 280 140)">
+              <path
+                d="M159 80h229c65 0 71 98 5 104H165c-79 0-73-104-6-104Z"
+                stroke="#ff966c"
+                strokeWidth="30"
+                opacity=".12"
+              />
+              <path
+                d="M159 80h229c65 0 71 98 5 104H165c-79 0-73-104-6-104Z"
+                stroke="#ff966c"
+                strokeWidth="1.5"
+              />
+              <path
+                d="M159 80h229c65 0 71 98 5 104H165c-79 0-73-104-6-104Z"
+                stroke="#ffd3b2"
+                strokeWidth="4"
+                className="race-line"
+              />
+              <path
+                d="M230 80h100M230 184h100"
+                stroke="#ff966c"
+                strokeDasharray="3 4"
+              />
+              <path d="M331 60v41m-6-41v41" stroke="#ffd9bc" strokeWidth="2" />
+            </g>
+            <text
+              x="280"
+              y="139"
+              textAnchor="middle"
+              fill="#ffbb8e"
+              className="visual-large-text"
+            >
+              WHAT IF?
+            </text>
+            <text
+              x="280"
+              y="159"
+              textAnchor="middle"
+              fill="#b27d60"
+              className="diagram-label"
+            >
+              SAME RACE. ANOTHER POSSIBILITY.
+            </text>
+          </svg>
+          <div className="visual-footer mono">
+            <span>01 → N WORKERS</span>
+            <span>DETERMINISTIC BY DESIGN ↗</span>
+          </div>
+        </>
+      )}
+      {kind === 'logs' && (
+        <>
+          <div className="visual-label mono">NOISE → SIGNAL / LOGFOLD</div>
+          <div className="log-terminal mono">
+            <p>
+              <span>$</span> logfold app.log
+            </p>
+            <p className="log-muted">Reading between the lines…</p>
+            <p>
+              <b>3×</b> user &lt;NUM&gt; logged in from &lt;IP&gt;
+            </p>
+            <p>
+              <b>2×</b> timeout after &lt;NUM&gt;s on db-&lt;NUM&gt;
+            </p>
+            <p>
+              <b>1×</b> request &lt;UUID&gt; finished
+            </p>
+            <span className="terminal-cursor" />
+          </div>
+        </>
+      )}
+      {kind === 'tables' && (
+        <>
+          <div className="visual-label mono">TABLE-LYFT / WEB TO WORKSPACE</div>
+          <div className="table-illustration">
+            <div className="table-toolbar mono">
+              <span>▦ CAPTURED TABLE</span>
+              <span>CSV ↗</span>
+            </div>
+            <div className="table-sample">
+              <span>service</span>
+              <span>region</span>
+              <span>status</span>
+              <span>api</span>
+              <span>us-east-1</span>
+              <span>ready</span>
+              <span>worker</span>
+              <span>eu-west-1</span>
+              <span>ready</span>
+              <span>queue</span>
+              <span>ap-south-1</span>
+              <span>ready</span>
+            </div>
+          </div>
+          <div className="visual-footer mono">
+            <span>PICK → PREVIEW → EXPORT</span>
+            <span>ILLUSTRATIVE SAMPLE DATA</span>
+          </div>
+        </>
+      )}
     </div>
   )
 }

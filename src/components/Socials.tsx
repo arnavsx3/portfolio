@@ -22,14 +22,14 @@ export default function Socials() {
     <section id="contact" className="contact" aria-labelledby="contact-heading">
       <div className="wrap">
         <div className="section-topline mono">
-          <span>04 / NEXT GOOD IDEA</span>
+          <span>04 / LET’S BUILD</span>
           <span>LET’S MAKE SOMETHING.</span>
         </div>
         <div className="contact-heading-row">
           <h2 id="contact-heading">
-            Got a good
+            Let’s ship
             <br />
-            “what if?”
+            something.
           </h2>
           <a
             className="contact-arrow"
@@ -42,7 +42,7 @@ export default function Socials() {
         <div className="contact-bottom">
           <div>
             <p>
-              A project, a collaboration, or a wonderfully weird idea.
+              Cloud, DevOps, open source, or an interesting engineering problem.
               <br />
               My inbox is a good place to start.
             </p>
