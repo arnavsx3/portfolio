@@ -10,8 +10,11 @@ export default function Playground() {
   useEffect(() => {
     if (state !== 'running') return
     const tick = () => {
-      setElapsed((performance.now() - startedAt.current) / 1000)
-      frame.current = requestAnimationFrame(tick)
+      const seconds = (performance.now() - startedAt.current) / 1000
+      // Once hidden, the display is static. Score from the clock on stop rather
+      // than spending a frame on React updates for an invisible counter.
+      setElapsed(Math.min(seconds, 1.5))
+      if (seconds < 1.5) frame.current = requestAnimationFrame(tick)
     }
     frame.current = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(frame.current)
