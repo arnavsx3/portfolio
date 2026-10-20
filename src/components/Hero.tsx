@@ -6,42 +6,44 @@ export default function Hero() {
     <section className="hero wrap" aria-labelledby="hero-heading">
       <div className="hero-copy">
         <p className="eyebrow">
-          <span className="tiny-star">✳</span> CS + AI STUDENT. PERPETUAL
-          BUILDER.
+          <span className="tiny-star">✳</span> CLOUD & DEVOPS / ENGINEERING
+          PORTFOLIO
         </p>
         <h1 id="hero-heading">
-          Built from
+          Code. Ship.
           <br />
           <span className="hero-curiosity">
-            curiosity<span className="lime">.</span>
+            Repeat<span className="lime">.</span>
             <span className="hero-star" aria-hidden="true">
               ✳
             </span>
           </span>
         </h1>
         <p className="hero-intro">
-          Hey, I’m Arnav. I build cloud-native systems,
-          <br className="desktop-break" /> useful tools, and the occasional
-          beautiful distraction.
+          I’m Arnav. I build cloud-native applications
+          <br className="desktop-break" /> and automate the infrastructure and
+          pipelines
+          <br className="desktop-break" /> that take them from a commit to the
+          cloud.
         </p>
         <div className="hero-actions">
           <a href="#work" className="button button-lime">
             Explore my work <Icon name="down" />
           </a>
           <a className="text-link" href="#about">
-            A little about me <span>↗</span>
+            Behind the pipelines <span>↗</span>
           </a>
         </div>
         <div className="hero-foot mono">
-          <span className="status-dot" /> ALWAYS BUILDING SOMETHING{' '}
+          <span className="status-dot" /> BUILD / AUTOMATE / OBSERVE{' '}
           <span className="hero-foot-line" />
         </div>
       </div>
       <Signal />
       <div className="hero-bottom mono">
-        <span>BACKENDS / CLOUD / CREATIVE CODE</span>
+        <span>AWS / KUBERNETES / TERRAFORM / CI/CD</span>
         <a href="#work">
-          SCROLL TO EXPLORE <Icon name="down" />
+          EXPLORE THE BUILDS <Icon name="down" />
         </a>
       </div>
     </section>

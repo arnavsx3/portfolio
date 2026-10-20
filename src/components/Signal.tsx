@@ -1,26 +1,36 @@
 import { useState } from 'react'
-
 const modes = [
   {
-    name: 'Build',
-    label: 'An idea becomes a system.',
-    core: 'CREATE',
-    nodes: ['IDEA', 'CODE', 'TEST', 'ITERATE'],
-    description: 'Start with a question. Make something that answers it.',
+    name: 'Delivery',
+    label:
+      'Illustrated delivery pipeline: Git, continuous integration, image publishing, and Helm deployment to EKS.',
+    core: 'EKS',
+    nodes: ['GIT PUSH', 'ECR', 'HELM', 'CI CHECKS'],
+    sub: 'DELIVERY TARGET',
+    detail: ['TEST', 'BUILD', 'DEPLOY'],
+    description:
+      'Verify the code. Publish the image. Deploy the exact version.',
   },
   {
-    name: 'Ship',
-    label: 'The path from local to live.',
-    core: 'DEPLOY',
-    nodes: ['GIT', 'CI / CD', 'CONTAINER', 'CLOUD'],
-    description: 'Automate the pipeline. Keep the feedback loop short.',
+    name: 'Platform',
+    label:
+      'Illustrated cloud platform: Terraform provisions AWS infrastructure for Kubernetes workloads.',
+    core: 'AWS',
+    nodes: ['TERRAFORM', 'IAM', 'NETWORK', 'COMPUTE'],
+    sub: 'INFRASTRUCTURE AS CODE',
+    detail: ['PLAN', 'APPLY', 'REPEAT'],
+    description:
+      'Define the infrastructure. Make the environment reproducible.',
   },
   {
-    name: 'Observe',
-    label: 'Find the signal in the noise.',
-    core: 'LISTEN',
-    nodes: ['METRICS', 'LOGS', 'TRACES', 'INSIGHT'],
-    description: 'Understand what the system is doing, then make it better.',
+    name: 'Signals',
+    label:
+      'Illustrated observability loop connecting metrics, logs, Prometheus, and Grafana.',
+    core: 'OBSERVE',
+    nodes: ['METRICS', 'GRAFANA', 'LOGS', 'PROMETHEUS'],
+    sub: 'RUNTIME FEEDBACK',
+    detail: ['COLLECT', 'QUERY', 'LEARN'],
+    description: 'Collect the signals that explain what the system is doing.',
   },
 ]
 const positions = [
@@ -29,20 +39,19 @@ const positions = [
   [250, 397],
   [67, 230],
 ]
-
 export default function Signal() {
   const [selected, setSelected] = useState(0)
   const mode = modes[selected]
   return (
-    <div className="signal-lab">
+    <div className="signal-lab platform-lab">
       <div className="signal-topline mono">
         <span>
-          <i className="status-dot" /> THE CURIOSITY ENGINE
+          <i className="status-dot" /> THE DELIVERY CONTROL PLANE
         </span>
-        <span>FIG. 01</span>
+        <span>ARCH. / 01</span>
       </div>
       <svg
-        className={`signal-art signal-mode-${selected}`}
+        className="signal-art"
         viewBox="0 0 500 460"
         role="img"
         aria-label={mode.label}
@@ -56,42 +65,33 @@ export default function Signal() {
           >
             <circle cx="1" cy="1" r=".8" fill="currentColor" opacity=".2" />
           </pattern>
-          <linearGradient id="core-fill" x1="0" y1="0" x2="1" y2="1">
-            <stop stopColor="#d4fb64" />
-            <stop offset="1" stopColor="#a4cf3b" />
+          <linearGradient id="platform-fill" x1="0" y1="0" x2="1" y2="1">
+            <stop stopColor="#273a24" />
+            <stop offset="1" stopColor="#1a251b" />
           </linearGradient>
         </defs>
         <rect width="500" height="460" fill="url(#signal-grid)" />
-        <g className="signal-orbits" fill="none" stroke="currentColor">
-          <circle cx="250" cy="230" r="165" opacity=".22" />
-          <circle cx="250" cy="230" r="118" opacity=".1" />
-          <ellipse
-            cx="250"
-            cy="230"
-            rx="213"
-            ry="77"
-            transform="rotate(-38 250 230)"
-            opacity=".5"
-          />
-          <ellipse
-            cx="250"
-            cy="230"
-            rx="213"
-            ry="77"
-            transform="rotate(38 250 230)"
-            opacity=".3"
-          />
-        </g>
+        <rect
+          x="112"
+          y="92"
+          width="276"
+          height="276"
+          rx="24"
+          stroke="currentColor"
+          strokeOpacity=".25"
+          strokeDasharray="3 6"
+          fill="none"
+        />
         <g
           className="signal-paths"
           stroke="currentColor"
           fill="none"
           opacity=".65"
         >
-          <path d="M250 63V230H433M250 397V230H67" />
+          <path d="M250 79v72m0 158v72M110 230h52m176 0h52" />
           <path
             className="signal-travel"
-            d="M250 63V230H433M250 397V230H67"
+            d="M250 79v72m0 158v72M110 230h52m176 0h52"
             strokeWidth="3"
           />
         </g>
@@ -103,7 +103,7 @@ export default function Signal() {
               width="86"
               height="32"
               rx="3"
-              fill="#161914"
+              fill="#161e16"
               stroke="currentColor"
               strokeOpacity=".5"
             />
@@ -112,48 +112,83 @@ export default function Signal() {
             </text>
           </g>
         ))}
-        <g className="signal-core">
-          <path
-            d="m250 158 67 36v74l-67 37-67-37v-74Z"
-            fill="url(#core-fill)"
+        <g>
+          <rect
+            x="168"
+            y="156"
+            width="176"
+            height="158"
+            rx="9"
+            fill="#000"
+            opacity=".18"
           />
-          <path
-            d="m183 194 67 37 67-37M250 231v74"
-            stroke="#172010"
-            strokeOpacity=".45"
-            fill="none"
+          <rect
+            x="162"
+            y="150"
+            width="176"
+            height="158"
+            rx="9"
+            fill="url(#platform-fill)"
+            stroke="#bbdf88"
+            strokeOpacity=".5"
           />
-          <path d="m250 158 67 36-67 37-67-37Z" fill="#e4ff9f" />
+          <path d="M162 182h176" stroke="#bbdf88" strokeOpacity=".2" />
+          <circle cx="178" cy="166" r="3" fill="#d4fb64" />
+          <circle cx="190" cy="166" r="3" fill="#d4fb64" opacity=".4" />
+          <circle cx="202" cy="166" r="3" fill="#d4fb64" opacity=".2" />
           <text
             x="250"
-            y="200"
+            y="219"
             textAnchor="middle"
-            fill="#1b2710"
-            className="core-text"
+            className="platform-core-text"
           >
             {mode.core}
           </text>
-          <path d="m215 249 14 8m-14-1 14 8" stroke="#34471b" strokeWidth="2" />
+          <text
+            x="250"
+            y="240"
+            textAnchor="middle"
+            className="diagram-label"
+            fill="#c3d6ae"
+          >
+            {mode.sub}
+          </text>
+          {mode.detail.map((step, i) => (
+            <g key={step} transform={`translate(${180 + i * 49},260)`}>
+              <rect
+                width="42"
+                height="28"
+                rx="3"
+                fill="#d4fb6410"
+                stroke="#c7e3a6"
+                strokeOpacity=".25"
+              />
+              <text
+                x="21"
+                y="17"
+                textAnchor="middle"
+                fill="#c7e3a6"
+                className="platform-pod-text"
+              >
+                {step}
+              </text>
+            </g>
+          ))}
         </g>
-        <g fill="currentColor">
-          <circle className="orbit-dot" cx="368" cy="116" r="5" />
-          <circle cx="104" cy="310" r="3" />
-          <path
-            d="M407 76v12m-6-6h12M104 132v10m-5-5h10"
-            stroke="currentColor"
-          />
+        <g stroke="currentColor" strokeOpacity=".5">
+          <path d="M126 108h12m-6-6v12M362 352h12m-6-6v12M35 337h12m-6-6v12M455 120h12m-6-6v12" />
         </g>
         <text x="18" y="440" className="diagram-label">
-          INPUT: CURIOSITY
+          FROM COMMIT
         </text>
         <text x="482" y="440" textAnchor="end" className="diagram-label">
-          OUTPUT: SOMETHING REAL
+          TO CLOUD
         </text>
       </svg>
       <div
         className="signal-controls"
         role="group"
-        aria-label="Explore the curiosity engine"
+        aria-label="Explore delivery, platform, and observability"
       >
         {modes.map((item, i) => (
           <button
@@ -169,6 +204,9 @@ export default function Signal() {
       <p className="signal-caption" aria-live="polite">
         {mode.description}
       </p>
+      <span className="architecture-caption mono">
+        AN ARCHITECTURE SKETCH / EXPLORE THE LAYERS ABOVE
+      </span>
     </div>
   )
 }

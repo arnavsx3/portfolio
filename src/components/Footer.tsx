@@ -5,7 +5,7 @@ export default function Footer() {
         arnav<span>✳</span>
       </a>
       <p className="mono">
-        © {new Date().getFullYear()} ARNAV. BUILT WITH CURIOSITY.
+        © {new Date().getFullYear()} ARNAV. BUILD. AUTOMATE. OBSERVE.
       </p>
       <a className="mono back-top" href="#top">
         BACK TO TOP ↑
