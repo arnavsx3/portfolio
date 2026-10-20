@@ -1,5 +1,6 @@
 export type ProjectCategory = 'Systems' | 'Tools' | 'Experiments'
-export type ProjectVisual = 'kessel' | 'network' | 'fence' | 'drift' | 'sand' | 'logs'
+export type ProjectVisual =
+  'kessel' | 'network' | 'fence' | 'drift' | 'sand' | 'logs'
 
 export interface Project {
   title: string
@@ -16,7 +17,8 @@ export const projects: Project[] = [
   {
     title: 'Kessel',
     category: 'Systems',
-    description: 'What if the pit stop happened a lap earlier? A distributed F1 simulator that puts Kubernetes to work on the counterfactuals.',
+    description:
+      'What if the pit stop happened a lap earlier? A distributed F1 simulator that puts Kubernetes to work on the counterfactuals.',
     stack: ['Python', 'FastAPI', 'Kubernetes', 'MinIO'],
     github: 'https://github.com/arnavsx3/kessel',
     visual: 'kessel',
@@ -25,7 +27,8 @@ export const projects: Project[] = [
   {
     title: 'NetSentry',
     category: 'Systems',
-    description: 'Making network health visible. A Go telemetry API, threshold-based alerts, and a dashboard that updates over WebSockets.',
+    description:
+      'Making network health visible. A Go telemetry API, threshold-based alerts, and a dashboard that updates over WebSockets.',
     stack: ['Go', 'PostgreSQL', 'Next.js', 'Docker'],
     github: 'https://github.com/arnavsx3/net-sentry',
     visual: 'network',
@@ -34,7 +37,8 @@ export const projects: Project[] = [
   {
     title: 'OriginFence',
     category: 'Tools',
-    description: 'A team-built Linux prototype for tracing AI-agent process chains, applying runtime policies, and explaining the verdict.',
+    description:
+      'A team-built Linux prototype for tracing AI-agent process chains, applying runtime policies, and explaining the verdict.',
     stack: ['Python', 'strace', 'SQLite'],
     github: 'https://github.com/arnavsx3/origin-fence',
     visual: 'fence',
@@ -43,7 +47,8 @@ export const projects: Project[] = [
   {
     title: 'Drift',
     category: 'Experiments',
-    description: 'One button. A hidden clock. A multiplayer timing game where your internal sense of seven seconds is the whole challenge.',
+    description:
+      'One button. A hidden clock. A multiplayer timing game where your internal sense of seven seconds is the whole challenge.',
     stack: ['Elixir', 'OTP', 'Phoenix LiveView'],
     github: 'https://github.com/arnavsx3/Drift',
     visual: 'drift',
@@ -52,7 +57,8 @@ export const projects: Project[] = [
   {
     title: 'Dunefall',
     category: 'Experiments',
-    description: 'A tiny terminal world of sand, water, and beautiful chaos. A C++ sandbox with deterministic physics and no game framework.',
+    description:
+      'A tiny terminal world of sand, water, and beautiful chaos. A C++ sandbox with deterministic physics and no game framework.',
     stack: ['C++20', 'CMake', 'POSIX'],
     github: 'https://github.com/arnavsx3/Dunefall',
     visual: 'sand',
@@ -61,7 +67,8 @@ export const projects: Project[] = [
   {
     title: 'logfold',
     category: 'Tools',
-    description: 'Less log noise, more signal. A Rust CLI that normalizes changing values and folds repetitive lines into counted patterns.',
+    description:
+      'Less log noise, more signal. A Rust CLI that normalizes changing values and folds repetitive lines into counted patterns.',
     stack: ['Rust', 'CLI', 'Pattern matching'],
     github: 'https://github.com/arnavsx3/logfold',
     visual: 'logs',
