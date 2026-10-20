@@ -1,9 +1,3 @@
 export default function Footer() {
-  return (
-    <footer className="py-10 flex items-center justify-center">
-      <p className="font-pixel text-arcade-cyan text-xs opacity-60">
-        © {new Date().getFullYear()} Arnav — built with Vite + React
-      </p>
-    </footer>
-  );
+  return <footer className="footer wrap"><a className="wordmark" href="#top" aria-label="Arnav — back to top">arnav<span>✳</span></a><p className="mono">© {new Date().getFullYear()} ARNAV. BUILT WITH CURIOSITY.</p><a className="mono back-top" href="#top">BACK TO TOP ↑</a></footer>
 }
