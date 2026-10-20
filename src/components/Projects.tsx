@@ -91,10 +91,7 @@ export default function Projects({
               <>
                 <div className="work-panel-note mono">
                   <span>SIX SELECTED BUILDS</span>
-                  <span>
-                    PRIVATE SOURCE LINKS INCLUDED · REPOSITORY ACCESS IS
-                    UNCHANGED
-                  </span>
+                  <span>CLOUD INFRASTRUCTURE / SYSTEMS / DEVELOPER TOOLS</span>
                 </div>
                 <div className="project-grid">
                   {projects.map((project) => (

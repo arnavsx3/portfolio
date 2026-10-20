@@ -212,4 +212,11 @@ export const otherProjects: OtherProject[] = [
     stack: 'JavaScript',
     repo: 'weather-app',
   },
+  {
+    title: 'Django Notes Deployment',
+    description:
+      'A forked Django notes app used to explore Jenkins deployment.',
+    stack: 'Django / Jenkins',
+    repo: 'django-notes-app',
+  },
 ]

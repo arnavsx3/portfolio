@@ -723,12 +723,7 @@ h1 {
   letter-spacing: 0.02em;
   color: #a9bb90;
 }
-.playground-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 100px;
-  align-items: center;
-}
+
 .contact {
   background: var(--lime);
   color: #1d2515;
@@ -942,8 +937,7 @@ h1 {
   .project-visual {
     height: 240px;
   }
-  .about-grid,
-  .playground-grid {
+  .about-grid {
     gap: 55px;
   }
   .about-intro h2 {
@@ -1119,8 +1113,7 @@ h1 {
   .log-terminal p {
     margin-bottom: 8px;
   }
-  .about-grid,
-  .playground-grid {
+  .about-grid {
     gap: 32px;
   }
   .about-intro h2 {
@@ -1406,8 +1399,7 @@ h1 {
   .all-repos .icon {
     width: 12px;
   }
-  .about-grid,
-  .playground-grid {
+  .about-grid {
     grid-template-columns: 1fr;
     gap: 40px;
   }
@@ -1439,9 +1431,7 @@ h1 {
     gap: 20px;
     padding-block: 24px;
   }
-  .playground-grid {
-    gap: 30px;
-  }
+
   .contact {
     padding-top: 35px;
     padding-bottom: 30px;
@@ -2496,5 +2486,11 @@ h1 {
   }
   .contact h2 {
     font-size: 50px;
+  }
+}
+@media (max-width: 360px) {
+  .contact h2 {
+    font-size: 45px;
+    letter-spacing: -2.7px;
   }
 }
