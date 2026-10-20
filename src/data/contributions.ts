@@ -4,6 +4,8 @@ export interface Contribution {
   detail: string
   status: 'Merged' | 'Closed · not merged'
   url: string
+  coauthored?: boolean
+  originalPullRequest?: { number: number; url: string }
 }
 export interface OpenSourceProject {
   name: string
@@ -86,12 +88,17 @@ export const openSourceProjects: OpenSourceProject[] = [
         url: 'https://github.com/scarletkc/Hatoba/pull/178',
       },
       {
-        number: 234,
+        number: 242,
         title: 'Ordered terminal-key input',
         detail:
-          'Proposed ordered key sequences, key-chip editing, and control-byte visibility with regression coverage. Closed without merging.',
-        status: 'Closed · not merged',
-        url: 'https://github.com/scarletkc/Hatoba/pull/234',
+          'Co-authored the merged terminal-key work: parsing, xterm-compatible encoding, whole-sequence validation, Auto-mode checks, and Windows ConPTY coverage. Originated in my PR #234 and landed through #242.',
+        status: 'Merged',
+        coauthored: true,
+        url: 'https://github.com/scarletkc/Hatoba/pull/242',
+        originalPullRequest: {
+          number: 234,
+          url: 'https://github.com/scarletkc/Hatoba/pull/234',
+        },
       },
     ],
   },

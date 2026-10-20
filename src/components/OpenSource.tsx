@@ -17,7 +17,7 @@ export default function OpenSource() {
         <div className="oss-stat">
           <strong>{String(merged).padStart(2, '0')}</strong>
           <span className="mono">
-            MERGED PULL REQUESTS
+            MERGED CONTRIBUTIONS
             <br />
             ACROSS 3 PROJECTS
           </span>
@@ -46,27 +46,39 @@ export default function OpenSource() {
             </div>
             <div className="pr-list">
               {project.contributions.map((pr) => (
-                <a
-                  className="pr-card"
-                  key={pr.number}
-                  href={pr.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div className="pr-card-top mono">
-                    <span>↳ PR #{pr.number}</span>
-                    <span
-                      className={
-                        pr.status === 'Merged' ? 'pr-merged' : 'pr-closed'
-                      }
+                <div className="pr-entry" key={pr.number}>
+                  <a
+                    className="pr-card"
+                    href={pr.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div className="pr-card-top mono">
+                      <span>↳ PR #{pr.number}</span>
+                      <span
+                        className={
+                          pr.status === 'Merged' ? 'pr-merged' : 'pr-closed'
+                        }
+                      >
+                        {pr.coauthored ? 'Co-authored · merged' : pr.status}
+                      </span>
+                      <Icon />
+                    </div>
+                    <h4>{pr.title}</h4>
+                    <p>{pr.detail}</p>
+                  </a>
+                  {pr.originalPullRequest && (
+                    <a
+                      className="pr-origin"
+                      href={pr.originalPullRequest.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      {pr.status}
-                    </span>
-                    <Icon />
-                  </div>
-                  <h4>{pr.title}</h4>
-                  <p>{pr.detail}</p>
-                </a>
+                      Original contribution: PR #{pr.originalPullRequest.number}{' '}
+                      <Icon />
+                    </a>
+                  )}
+                </div>
               ))}
             </div>
           </article>

@@ -35,7 +35,7 @@ npm run format:check  # Verify formatting without changing files
 - `src/index.css`: responsive layout, design tokens, and reduced-motion rules.
 - `public/fonts`: locally hosted, openly licensed fonts and their licenses.
 
-Project descriptions are curated from the corresponding repository READMEs, including the private projects Arnav explicitly selected for this portfolio. Upstream work is attributed to the original projects, with individual PR links; closed, unmerged work is labeled separately. OriginFence is credited as a team project and a prototype. There are no placeholder destinations, fabricated credentials, runtime GitHub API calls, analytics, or client-side secrets.
+Project descriptions are curated from the corresponding repository READMEs, including the private projects Arnav explicitly selected for this portfolio. Upstream work is attributed to the original projects, with individual PR links; co-authored work is explicitly credited, and original PR links are retained when a follow-up PR landed the contribution. OriginFence is credited as a team project and a prototype. There are no placeholder destinations, fabricated credentials, runtime GitHub API calls, analytics, or client-side secrets.
 
 ## Accessibility and behavior
 
