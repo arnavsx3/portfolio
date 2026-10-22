@@ -42,7 +42,7 @@ export default function Socials() {
         <div className="contact-bottom">
           <div>
             <p>
-              Cloud, DevOps, open source, or an interesting engineering problem.
+              Cloud, DevOps, open source, or an interesting engineering problem.{' '}
               <br />
               My inbox is a good place to start.
             </p>

@@ -38,10 +38,8 @@ export default function Projects({
           <span className="muted">Understood.</span>
         </h2>
         <p>
-          Cloud platforms, practical tools,
-          <br />
-          and contributions to the projects
-          <br />
+          Cloud platforms, practical tools, <br />
+          and contributions to the projects <br />
           other developers depend on.
         </p>
       </div>
