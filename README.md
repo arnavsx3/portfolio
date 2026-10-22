@@ -30,7 +30,7 @@ npm run format:check  # Verify formatting without changing files
 - `src/components/ProjectVisual.tsx`: original SVG and CSS illustrations of project concepts, rather than screenshots or live telemetry.
 - `src/data/contributions.ts`: verified upstream pull requests, summaries, and merge status. Refresh the recorded verification date when updating these entries.
 - `src/components/Projects.tsx`: accessible featured / open-source / archive tabs.
-- `src/data/certifications.ts`: credential records supplied by Arnav; leave empty until verification links are supplied.
+- `src/data/certifications.ts`: AWS credential records and original certificate links supplied in Arnav's resume.
 - `src/components/Certifications.tsx`: a credential gallery, with an honest pending state when no records exist.
 - `src/index.css`: responsive layout, design tokens, and reduced-motion rules.
 - `public/fonts`: locally hosted, openly licensed fonts and their licenses.
