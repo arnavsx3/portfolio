@@ -33,9 +33,9 @@ npm run build
 npm run preview
 ```
 
-## Automatic updates
+## Refreshing GitHub data
 
-Projects and open-source contributions refresh from GitHub every six hours. Repository descriptions, featured pins, merged PRs, and contribution counts stay up to date automatically.
+Run a manual refresh after adding a project, updating a repository, or getting a contribution merged. This updates project details, featured pins, merged PRs, and contribution counts. There are no scheduled refreshes.
 
 To refresh manually, open **Actions → Verify and deploy portfolio → Run workflow** and select **main**.
 
