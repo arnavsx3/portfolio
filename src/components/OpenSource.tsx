@@ -1,10 +1,10 @@
-import { useId, useState } from 'react'
 import {
   contributionsSyncedAt,
   openSourceProjects,
 } from '../data/contributions'
 import type { Contribution, OpenSourceProject } from '../data/contributions'
 import Icon from './Icon'
+import { contributionPath } from '../routes'
 
 const dateFormat = new Intl.DateTimeFormat('en', {
   month: 'long',
@@ -13,7 +13,7 @@ const dateFormat = new Intl.DateTimeFormat('en', {
   timeZone: 'UTC',
 })
 
-function ContributionCard({ pr }: { pr: Contribution }) {
+export function ContributionCard({ pr }: { pr: Contribution }) {
   return (
     <div className="pr-entry">
       <a
@@ -50,9 +50,7 @@ function ContributionCard({ pr }: { pr: Contribution }) {
 }
 
 function ProjectContributions({ project }: { project: OpenSourceProject }) {
-  const [expanded, setExpanded] = useState(false)
-  const moreId = useId()
-  const [latest, ...more] = project.contributions
+  const [latest] = project.contributions
   return (
     <article className="contribution">
       <div className="contribution-overview">
@@ -83,25 +81,16 @@ function ProjectContributions({ project }: { project: OpenSourceProject }) {
       </div>
       <div className="pr-list">
         <ContributionCard pr={latest} />
-        {more.length > 0 && (
-          <>
-            <button
-              className="contribution-expand"
-              aria-expanded={expanded}
-              aria-controls={moreId}
-              onClick={() => setExpanded((value) => !value)}
-            >
-              {expanded
-                ? 'Show fewer contributions'
-                : `See all ${project.contributions.length} contributions`}
-              <Icon name={expanded ? 'down' : 'plus'} />
-            </button>
-            <div id={moreId} className="pr-list" hidden={!expanded}>
-              {expanded &&
-                more.map((pr) => <ContributionCard pr={pr} key={pr.number} />)}
-            </div>
-          </>
-        )}
+        <a
+          className="contribution-expand"
+          href={contributionPath(project.repository)}
+        >
+          See all {project.contributions.length}{' '}
+          {project.contributions.length === 1
+            ? 'contribution'
+            : 'contributions'}
+          <Icon />
+        </a>
       </div>
     </article>
   )
@@ -136,11 +125,17 @@ export default function OpenSource() {
           <ProjectContributions project={project} key={project.repository} />
         ))}
       </div>
-      <p className="contribution-note mono">
-        UPSTREAM STATUS SYNCED{' '}
-        {dateFormat.format(new Date(contributionsSyncedAt)).toUpperCase()} ·
-        EACH ENTRY LINKS TO THE ORIGINAL PR.
-      </p>
+      <ContributionSyncNote />
     </div>
+  )
+}
+
+export function ContributionSyncNote() {
+  return (
+    <p className="contribution-note mono">
+      UPSTREAM STATUS SYNCED{' '}
+      {dateFormat.format(new Date(contributionsSyncedAt)).toUpperCase()} · EACH
+      ENTRY LINKS TO THE ORIGINAL PR.
+    </p>
   )
 }

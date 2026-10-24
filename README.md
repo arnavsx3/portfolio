@@ -24,7 +24,9 @@ npm run format:check  # Verify formatting without changing files
 
 ## Content and structure
 
-- `src/data/projects.ts`: six featured projects and the expandable project archive. Private featured repositories are deliberately linked; the `private` flag only labels their source availability and never changes GitHub permissions. Clear it when a repository becomes public.
+- `src/data/projects.generated.json`: public GitHub project metadata, featured selections, and the automatically discovered archive.
+- `projects.config.json`: exclusions, explicitly included learning forks, showcase visuals, and already-published private fallback copy.
+- `src/data/projects.ts`: typed project data consumed by the existing design.
 - `src/data/profiles.ts`: email and social links.
 - `src/components/Signal.tsx`: interactive delivery / platform / observability architecture sketch.
 - `src/components/ProjectVisual.tsx`: original SVG and CSS illustrations of project concepts, rather than screenshots or live telemetry.
@@ -38,7 +40,7 @@ npm run format:check  # Verify formatting without changing files
 - `src/index.css`: responsive layout, design tokens, and reduced-motion rules.
 - `public/fonts`: locally hosted, openly licensed fonts and their licenses.
 
-Project descriptions are curated from the corresponding repository READMEs, including the private projects Arnav explicitly selected for this portfolio. Upstream work is attributed to the original projects, with individual PR links; co-authored work is explicitly credited, and original PR links are retained when a follow-up PR landed the contribution. OriginFence is credited as a team project and a prototype. There are no placeholder destinations, fabricated credentials, runtime GitHub API calls, analytics, or client-side secrets.
+Public project names, descriptions, languages, visibility, and archive membership are refreshed from GitHub. Explicitly selected private showcases retain only their previously published fallback copy. Upstream work is attributed to the original projects, with individual PR links; co-authored work is explicitly credited, and original PR links are retained when a follow-up PR landed the contribution. OriginFence is credited as a team project and a prototype. There are no placeholder destinations, fabricated credentials, runtime GitHub API calls, analytics, or client-side secrets.
 
 ## Accessibility and behavior
 
@@ -50,9 +52,22 @@ GitHub Actions checks formatting, lint, sync tests, and production builds on pul
 
 Use focused commits on a feature branch and open a pull request into `main`. Preview changes locally before merging.
 
+## Automatic projects
+
+The same six-hour Pages workflow runs `npm run sync:github` to refresh both projects and contributions. New public repositories owned by this account enter More Projects automatically. Public GitHub pins lead Featured projects; existing showcases fill remaining slots, followed by recently active repositories, up to the configured limit. A newly pinned project moves out of More Projects into Featured rather than appearing twice.
+
+Repository names, descriptions, language stacks, source links, and public/private labels update from GitHub. Change a repository description or pin on GitHub to update its portfolio presentation at the next successful deployment. The profile repository and this portfolio are excluded. Forks are excluded by default because upstream work has its own section; the already-listed Django learning fork remains explicitly included. Archived projects remain visible and are labelled. Ordinary new public, non-fork repositories increase the archive count; private repositories are never automatically discovered or published.
+
+The sync uses the public owner-repositories endpoint even with a privileged local token. Only public repositories are configured today. An explicitly configured, already-published private showcase can retain fallback prose if required in future; private contents are never fetched. Repositories removed from the public list otherwise disappear automatically. Visual illustrations and categories stay consistent with the site design; they are optional presentation choices rather than repository facts.
+
+```sh
+npm run sync:projects  # refresh project snapshot only
+npm run sync:github    # refresh projects and contributions
+```
+
 ## Automatic open-source contributions
 
-Each upstream project shows its newest merged contribution, with a keyboard-accessible **See all contributions** control for its full set of cards. Counts, merge dates, and the verification date come from the snapshot; Repowise's four merged PRs are included. The original Hatoba #234 link remains attached to its merged, co-authored landing PR #242 and is not counted twice.
+Each upstream project shows its newest merged contribution, with a **See all contributions** link to a dedicated repository page. Every repository page is generated from the same refreshed data, with search, authored/co-authored filters, merge dates, and original PR links. Shareable `#/contributions/owner/repo` routes support direct visits, reloads, and browser back/forward on GitHub Pages without server rewrites. New upstream projects automatically get pages without hand-written routes. Counts, merge dates, and the verification date come from the snapshot; Repowise's four merged PRs are included. The original Hatoba #234 link remains attached to its merged, co-authored landing PR #242 and is not counted twice.
 
 The existing Pages workflow refreshes and deploys contributions every six hours (at 00:17, 06:17, 12:17, and 18:17 UTC), on pushes to `main`, and on manual runs. It discovers authored merged PRs across public upstream repositories, so a first contribution to a new project creates a project entry automatically. Only public merged PRs outside this account's own repositories qualify.
 

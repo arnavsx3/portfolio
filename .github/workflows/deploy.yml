@@ -26,9 +26,9 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
-      - name: Refresh verified public contributions
+      - name: Refresh GitHub projects and contributions
         if: (github.ref == 'refs/heads/main' && github.event_name != 'pull_request') || github.event_name == 'workflow_dispatch'
-        run: npm run sync:contributions
+        run: npm run sync:github
         env:
           GH_TOKEN: ${{ github.token }}
       - run: npm run format:check

@@ -1779,6 +1779,7 @@ h1 {
   font-size: var(--text-label);
 }
 .pr-card {
+  display: block;
   background: #1b2018;
   border: 1px solid #343e2c;
   border-radius: 4px;
@@ -2521,4 +2522,105 @@ h1 {
   .hero h1 {
     font-size: clamp(54px, 16vw, 58px);
   }
+}
+
+/* Repository pages share the portfolio's typography, cards, and color tokens. */
+.contribution-page {
+  min-height: 75vh;
+}
+.contribution-back {
+  margin-bottom: 56px;
+}
+.contribution-back .icon {
+  transform: rotate(225deg);
+}
+.contribution-page-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+.contribution-page h1 {
+  font-size: clamp(2rem, 5vw, 4.25rem);
+  letter-spacing: -0.05em;
+  line-height: 1.1;
+  margin: 12px 0 24px;
+  overflow-wrap: anywhere;
+}
+.contribution-page-description {
+  max-width: 650px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+.contribution-filters {
+  display: flex;
+  gap: 24px;
+  padding: 24px 0;
+  border-block: 1px solid var(--line);
+}
+.contribution-filters label {
+  display: grid;
+  gap: 12px;
+  flex: 1;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.contribution-filters input,
+.contribution-filters select {
+  width: 100%;
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+  text-transform: none;
+  letter-spacing: normal;
+}
+.contribution-results {
+  margin: 24px 0;
+  font-size: 11px;
+  color: var(--muted);
+}
+.contribution-page-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.contribution-page-grid .pr-entry {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.contribution-page-grid .pr-card {
+  display: block;
+  flex: 1;
+}
+.contribution-empty {
+  padding-block: 48px;
+  color: var(--muted);
+}
+@media (max-width: 700px) {
+  .contribution-page-heading,
+  .contribution-filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .contribution-page-grid {
+    grid-template-columns: 1fr;
+  }
+  .contribution-back {
+    margin-bottom: 36px;
+  }
+}
+
+.contribution-page h1 .muted {
+  display: block;
+  font-size: 0.65em;
+  margin-top: 12px;
 }

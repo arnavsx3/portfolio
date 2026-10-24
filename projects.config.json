@@ -1,0 +1,38 @@
+{
+  "username": "arnavsx3",
+  "featuredLimit": 6,
+  "exclude": ["portfolio", "arnavsx3"],
+  "includeForks": ["django-notes-app"],
+  "featured": [
+    {
+      "repo": "cassian",
+      "category": "Cloud infrastructure",
+      "visual": "cassian"
+    },
+    {
+      "repo": "synapse",
+      "category": "Cloud-native delivery",
+      "visual": "synapse"
+    },
+    {
+      "repo": "morlana",
+      "category": "Systems tooling",
+      "visual": "snapshots"
+    },
+    {
+      "repo": "kessel",
+      "category": "Distributed workloads",
+      "visual": "kessel"
+    },
+    {
+      "repo": "logfold",
+      "category": "Developer tooling",
+      "visual": "logs"
+    },
+    {
+      "repo": "table-lyft",
+      "category": "Local-first tooling",
+      "visual": "tables"
+    }
+  ]
+}

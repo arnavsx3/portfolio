@@ -1,0 +1,215 @@
+{
+  "username": "arnavsx3",
+  "syncedAt": "2026-10-24T07:36:50.630Z",
+  "featured": [
+    {
+      "title": "table-lyft",
+      "category": "Local-first tooling",
+      "description": "An extension for lifting tables from browsers to spreadsheets cleanly.",
+      "stack": ["TypeScript", "CSS", "JavaScript", "HTML"],
+      "github": "https://github.com/arnavsx3/table-lyft",
+      "visual": "tables",
+      "note": "Project details synced from GitHub.",
+      "private": false
+    },
+    {
+      "title": "kessel",
+      "category": "Distributed workloads",
+      "description": "Reproducible F1 counterfactual simulator.",
+      "stack": ["Python", "Dockerfile"],
+      "github": "https://github.com/arnavsx3/kessel",
+      "visual": "kessel",
+      "note": "Project details synced from GitHub.",
+      "private": false
+    },
+    {
+      "title": "cassian",
+      "category": "Cloud infrastructure",
+      "description": "Risk-Aware AWS Spot fleet optimizer.",
+      "stack": ["Python", "HCL", "Shell", "Groovy"],
+      "github": "https://github.com/arnavsx3/cassian",
+      "visual": "cassian",
+      "note": "Project details synced from GitHub.",
+      "private": false
+    },
+    {
+      "title": "synapse",
+      "category": "Cloud-native delivery",
+      "description": "AI-powered knowledge workspace.",
+      "stack": ["TypeScript", "PLpgSQL", "Go Template", "Dockerfile"],
+      "github": "https://github.com/arnavsx3/synapse",
+      "visual": "synapse",
+      "note": "Project details synced from GitHub.",
+      "private": false
+    },
+    {
+      "title": "morlana",
+      "category": "Systems tooling",
+      "description": "Version Control for folders.",
+      "stack": ["C++", "Python", "Shell", "CMake"],
+      "github": "https://github.com/arnavsx3/morlana",
+      "visual": "snapshots",
+      "note": "Project details synced from GitHub.",
+      "private": false
+    },
+    {
+      "title": "logfold",
+      "category": "Developer tooling",
+      "description": "Simple CLI tool that folds logs into patterns.",
+      "stack": ["Rust"],
+      "github": "https://github.com/arnavsx3/logfold",
+      "visual": "logs",
+      "note": "Project details synced from GitHub.",
+      "private": false
+    }
+  ],
+  "otherProjects": [
+    {
+      "title": "dejavu",
+      "description": "Little things, felt again. A local home for everyday memories, built with Rust.",
+      "stack": "TypeScript",
+      "repo": "dejavu",
+      "github": "https://github.com/arnavsx3/dejavu"
+    },
+    {
+      "title": "backsoon",
+      "description": "A simple Ruby on Rails app to track what you lend, who has it, and when it is coming back.",
+      "stack": "Ruby",
+      "repo": "backsoon",
+      "github": "https://github.com/arnavsx3/backsoon"
+    },
+    {
+      "title": "Drift",
+      "description": "A multiplayer timing game built with Elixir/OTP and Phoenix LiveView.",
+      "stack": "Elixir",
+      "repo": "Drift",
+      "github": "https://github.com/arnavsx3/Drift"
+    },
+    {
+      "title": "Patchbook",
+      "description": "A personal notebook for programming errors, fixes, and lessons worth keeping.",
+      "stack": "C#",
+      "repo": "Patchbook",
+      "github": "https://github.com/arnavsx3/Patchbook"
+    },
+    {
+      "title": "Dunefall",
+      "description": "Falling-sand playground in C++.",
+      "stack": "C++",
+      "repo": "Dunefall",
+      "github": "https://github.com/arnavsx3/Dunefall"
+    },
+    {
+      "title": "origin-fence",
+      "description": "Runtime guardrails for AI agents",
+      "stack": "Python",
+      "repo": "origin-fence",
+      "github": "https://github.com/arnavsx3/origin-fence"
+    },
+    {
+      "title": "next-up",
+      "description": "A simple queue management application where users can create and join queues using a unique room code. Built to explore K8s, Helm, autoscaling, load testing, and monitoring.",
+      "stack": "Python",
+      "repo": "next-up",
+      "github": "https://github.com/arnavsx3/next-up"
+    },
+    {
+      "title": "anon-feedback",
+      "description": "Simple Vite + FastApi app built to implement devsecops tools while deploying it through jenkins.",
+      "stack": "TypeScript",
+      "repo": "anon-feedback",
+      "github": "https://github.com/arnavsx3/anon-feedback"
+    },
+    {
+      "title": "jenkins-shared-repository",
+      "description": "Repository to store my .groovy files.",
+      "stack": "Groovy",
+      "repo": "jenkins-shared-repository",
+      "github": "https://github.com/arnavsx3/jenkins-shared-repository"
+    },
+    {
+      "title": "django-notes-app",
+      "description": "Forked simple django repo to deploy it through jenkins.",
+      "stack": "JavaScript / Fork",
+      "repo": "django-notes-app",
+      "github": "https://github.com/arnavsx3/django-notes-app"
+    },
+    {
+      "title": "net-sentry",
+      "description": "Distributed network observability platform.",
+      "stack": "Go",
+      "repo": "net-sentry",
+      "github": "https://github.com/arnavsx3/net-sentry"
+    },
+    {
+      "title": "chatsocket",
+      "description": "A chat app using websocket/socket.io.",
+      "stack": "TypeScript",
+      "repo": "chatsocket",
+      "github": "https://github.com/arnavsx3/chatsocket"
+    },
+    {
+      "title": "student-manager-api",
+      "description": "Basic project using spring boot.",
+      "stack": "Java",
+      "repo": "student-manager-api",
+      "github": "https://github.com/arnavsx3/student-manager-api"
+    },
+    {
+      "title": "eda-webhook-todo",
+      "description": "Nextjs app using custom clerk auth.",
+      "stack": "TypeScript",
+      "repo": "eda-webhook-todo",
+      "github": "https://github.com/arnavsx3/eda-webhook-todo"
+    },
+    {
+      "title": "clerk-auth-starter",
+      "description": "A basic clerk auth webapp that uses webhooks to sync neon db.",
+      "stack": "TypeScript",
+      "repo": "clerk-auth-starter",
+      "github": "https://github.com/arnavsx3/clerk-auth-starter"
+    },
+    {
+      "title": "snapshare",
+      "description": "Nextjs project using typescript and cloudinary.",
+      "stack": "TypeScript",
+      "repo": "snapshare",
+      "github": "https://github.com/arnavsx3/snapshare"
+    },
+    {
+      "title": "resume-analyzer",
+      "description": "A full-stack app that uses Gemini API with structured output to generate personalized interview reports from your resume and job description.",
+      "stack": "JavaScript",
+      "repo": "resume-analyzer",
+      "github": "https://github.com/arnavsx3/resume-analyzer"
+    },
+    {
+      "title": "world-atlas",
+      "description": "Basic React frontend project built while learning core React concepts and component structure.",
+      "stack": "JavaScript",
+      "repo": "world-atlas",
+      "github": "https://github.com/arnavsx3/world-atlas"
+    },
+    {
+      "title": "task-manager-api",
+      "description": "Project Management backend API built with Node.js, Express, and MongoDB Atlas featuring authentication, role-based access, tasks & subtasks, file uploads, and clean error handling.",
+      "stack": "JavaScript",
+      "repo": "task-manager-api",
+      "github": "https://github.com/arnavsx3/task-manager-api"
+    },
+    {
+      "title": "classic-node-server",
+      "description": "A simple Node.js backend server without using frameworks.",
+      "stack": "JavaScript",
+      "repo": "classic-node-server",
+      "github": "https://github.com/arnavsx3/classic-node-server"
+    },
+    {
+      "title": "weather-app",
+      "description": "Weather app built with basic UI and API integration.",
+      "stack": "JavaScript",
+      "repo": "weather-app",
+      "github": "https://github.com/arnavsx3/weather-app"
+    }
+  ]
+}
