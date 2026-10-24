@@ -136,3 +136,12 @@ test('incomplete or failed responses abort instead of publishing an empty list',
     /verify pinned/,
   )
 })
+
+test('deleted or newly private public showcases disappear instead of leaving stale cards', async () => {
+  const result = await collectProjects(
+    api([repo('replacement'), repo('showcase', { private: true })]),
+    { ...config, featured: [{ repo: 'showcase', visual: 'logs' }] },
+  )
+  assert.equal(result.featured[0].title, 'replacement')
+  assert.equal(result.otherProjects.length, 0)
+})

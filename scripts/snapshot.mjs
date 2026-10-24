@@ -1,5 +1,6 @@
 import { execFileSync } from 'node:child_process'
 import { writeFile, rename, rm } from 'node:fs/promises'
+import { format } from 'prettier'
 
 export function githubToken() {
   const token = process.env.GH_TOKEN || process.env.GITHUB_TOKEN
@@ -22,7 +23,10 @@ export async function writeSnapshot(name, snapshot) {
     import.meta.url,
   )
   try {
-    await writeFile(temporary, `${JSON.stringify(snapshot, null, 2)}\n`)
+    await writeFile(
+      temporary,
+      await format(JSON.stringify(snapshot), { parser: 'json' }),
+    )
     await rename(temporary, target)
   } finally {
     await rm(temporary, { force: true })

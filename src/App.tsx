@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState, useSyncExternalStore } from 'react'
 import Hero from './components/Hero'
 import About from './components/About'
 import Projects from './components/Projects'
@@ -7,18 +7,55 @@ import type { WorkTab } from './components/Projects'
 import Socials from './components/Socials'
 import Footer from './components/Footer'
 import Icon from './components/Icon'
+import ContributionPage from './components/ContributionPage'
+import { contributionRepository } from './routes'
+
+const subscribe = (callback: () => void) => {
+  window.addEventListener('hashchange', callback)
+  return () => window.removeEventListener('hashchange', callback)
+}
+const currentHash = () => window.location.hash
 
 export default function App() {
+  const hash = useSyncExternalStore(subscribe, currentHash, () => '')
+  const repository = contributionRepository(hash)
+  useEffect(() => {
+    document.title =
+      repository !== null
+        ? `${repository || 'Unknown project'} contributions — Arnav`
+        : 'Arnav — Cloud & DevOps'
+    if (repository !== null) {
+      window.scrollTo(0, 0)
+      document
+        .getElementById('contribution-heading')
+        ?.focus({ preventScroll: true })
+    } else {
+      const id = hash.slice(1) || 'top'
+      document.getElementById(id)?.scrollIntoView()
+    }
+  }, [repository, hash])
   const [paused, setPaused] = useState(false)
   const [workTab, setWorkTab] = useState<WorkTab>('featured')
   return (
     <div id="top" data-motion={paused ? 'paused' : 'playing'}>
-      <a className="skip-link" href="#main">
+      <a
+        className="skip-link"
+        href="#main"
+        onClick={(event) => {
+          event.preventDefault()
+          document.getElementById('main')?.focus()
+          document.getElementById('main')?.scrollIntoView()
+        }}
+      >
         Skip to content
       </a>
       <header className="header">
         <div className="wrap nav-wrap">
-          <a className="wordmark" href="#top" aria-label="Arnav — home">
+          <a
+            className="wordmark"
+            href={repository !== null ? '#' : '#top'}
+            aria-label="Arnav — home"
+          >
             arnav<span>✳</span>
           </a>
           <nav aria-label="Main navigation">
@@ -52,24 +89,34 @@ export default function App() {
           </div>
         </div>
       </header>
-      <main id="main">
-        <Hero />
-        <div className="ticker" aria-hidden="true">
-          <div className="wrap ticker-inner">
-            <span>CLOUD NATIVE</span>
-            <i>✳</i>
-            <span>INFRASTRUCTURE AS CODE</span>
-            <i>✳</i>
-            <span>CI / CD</span>
-            <i>✳</i>
-            <span>OBSERVABILITY</span>
-            <i>✳</i>
-          </div>
-        </div>
-        <Projects activeTab={workTab} onTabChange={setWorkTab} />
-        <About />
-        <Certifications />
-        <Socials />
+      <main id="main" tabIndex={-1}>
+        {repository !== null ? (
+          <ContributionPage
+            key={repository}
+            repository={repository}
+            onBack={() => setWorkTab('opensource')}
+          />
+        ) : (
+          <>
+            <Hero />
+            <div className="ticker" aria-hidden="true">
+              <div className="wrap ticker-inner">
+                <span>CLOUD NATIVE</span>
+                <i>✳</i>
+                <span>INFRASTRUCTURE AS CODE</span>
+                <i>✳</i>
+                <span>CI / CD</span>
+                <i>✳</i>
+                <span>OBSERVABILITY</span>
+                <i>✳</i>
+              </div>
+            </div>
+            <Projects activeTab={workTab} onTabChange={setWorkTab} />
+            <About />
+            <Certifications />
+            <Socials />
+          </>
+        )}
       </main>
       <Footer />
     </div>

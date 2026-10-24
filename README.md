@@ -58,7 +58,7 @@ The same six-hour Pages workflow runs `npm run sync:github` to refresh both proj
 
 Repository names, descriptions, language stacks, source links, and public/private labels update from GitHub. Change a repository description or pin on GitHub to update its portfolio presentation at the next successful deployment. The profile repository and this portfolio are excluded. Forks are excluded by default because upstream work has its own section; the already-listed Django learning fork remains explicitly included. Archived projects remain visible and are labelled. Ordinary new public, non-fork repositories increase the archive count; private repositories are never automatically discovered or published.
 
-The sync uses the public owner-repositories endpoint even with a privileged local token. Previously published, explicitly configured private showcases can retain their existing fallback prose if unavailable publicly. Their private contents are never fetched. Visual illustrations and categories stay consistent with the site design; they are optional presentation choices rather than repository facts.
+The sync uses the public owner-repositories endpoint even with a privileged local token. Only public repositories are configured today. An explicitly configured, already-published private showcase can retain fallback prose if required in future; private contents are never fetched. Repositories removed from the public list otherwise disappear automatically. Visual illustrations and categories stay consistent with the site design; they are optional presentation choices rather than repository facts.
 
 ```sh
 npm run sync:projects  # refresh project snapshot only
@@ -67,7 +67,7 @@ npm run sync:github    # refresh projects and contributions
 
 ## Automatic open-source contributions
 
-Each upstream project shows its newest merged contribution, with a keyboard-accessible **See all contributions** control for its full set of cards. Counts, merge dates, and the verification date come from the snapshot; Repowise's four merged PRs are included. The original Hatoba #234 link remains attached to its merged, co-authored landing PR #242 and is not counted twice.
+Each upstream project shows its newest merged contribution, with a **See all contributions** link to a dedicated repository page. Every repository page is generated from the same refreshed data, with search, authored/co-authored filters, merge dates, and original PR links. Shareable `#/contributions/owner/repo` routes support direct visits, reloads, and browser back/forward on GitHub Pages without server rewrites. New upstream projects automatically get pages without hand-written routes. Counts, merge dates, and the verification date come from the snapshot; Repowise's four merged PRs are included. The original Hatoba #234 link remains attached to its merged, co-authored landing PR #242 and is not counted twice.
 
 The existing Pages workflow refreshes and deploys contributions every six hours (at 00:17, 06:17, 12:17, and 18:17 UTC), on pushes to `main`, and on manual runs. It discovers authored merged PRs across public upstream repositories, so a first contribution to a new project creates a project entry automatically. Only public merged PRs outside this account's own repositories qualify.
 
