@@ -1739,6 +1739,45 @@ h1 {
   grid-template-columns: 1fr;
   gap: 12px;
 }
+.pr-list[hidden] {
+  display: none;
+}
+.contribution-overview > .contribution-count {
+  color: var(--lime);
+  font-size: var(--text-label);
+  letter-spacing: 0.5px;
+  margin: 0 0 14px;
+}
+.contribution-expand {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 15px 20px;
+  background: transparent;
+  color: var(--lime);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  text-align: left;
+  font-size: var(--text-ui);
+  cursor: pointer;
+}
+.contribution-expand:hover {
+  background: #222a1d;
+  border-color: #82995d;
+}
+.contribution-expand .icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+.pr-date {
+  display: block;
+  margin-top: 14px;
+  color: #8b967c;
+  font-size: var(--text-label);
+}
 .pr-card {
   background: #1b2018;
   border: 1px solid #343e2c;

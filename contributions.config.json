@@ -1,0 +1,61 @@
+{
+  "username": "arnavsx3",
+  "projects": {
+    "repowise-dev/repowise": {
+      "name": "Repowise",
+      "scope": "Codebase intelligence",
+      "description": "Making workspace updates, security scans, and language analysis more reliable.",
+      "fork": "https://github.com/arnavsx3/repowise"
+    },
+    "brekkylab/backlot": {
+      "name": "Backlot",
+      "scope": "API emulation / AWS S3",
+      "description": "Bringing S3 request validation closer to measured AWS behavior.",
+      "fork": "https://github.com/arnavsx3/backlot"
+    },
+    "scarletkc/Hatoba": {
+      "name": "Hatoba",
+      "scope": "Desktop SSH / developer experience",
+      "description": "Contributing to the desktop experience and terminal input tooling.",
+      "fork": "https://github.com/arnavsx3/Hatoba"
+    }
+  },
+  "pullRequests": {
+    "repowise-dev/repowise#4107": {
+      "title": "Workspace failures & cancellation",
+      "detail": "Preserved repository aliases in errors, propagated cancellation, and covered cleanup and callback failures with regression tests."
+    },
+    "repowise-dev/repowise#3631": {
+      "title": "Deduplicate historical secret findings",
+      "detail": "Stopped unchanged secrets being reported again across file versions while retaining their earliest known introduction."
+    },
+    "brekkylab/backlot#733": {
+      "title": "Signature requirements for annotation writes",
+      "detail": "Rejected unsigned and Signature V2 annotation writes, preserving selector and credential error precedence."
+    },
+    "brekkylab/backlot#685": {
+      "title": "Query validation before CORS preflight",
+      "detail": "Aligned OPTIONS selector refusals with S3 behavior and added regression cases for bucket and object request paths."
+    },
+    "scarletkc/Hatoba#178": {
+      "title": "Update progress layout",
+      "detail": "Removed the progress-track width cap so it fills the available text column; checked responsive layouts, themes, and locales."
+    },
+    "scarletkc/Hatoba#242": {
+      "title": "Ordered terminal-key input",
+      "detail": "Co-authored the merged terminal-key work: parsing, xterm-compatible encoding, whole-sequence validation, Auto-mode checks, and Windows ConPTY coverage. Originated in my PR #234 and landed through #242.",
+      "originalPullRequest": {
+        "number": 234,
+        "url": "https://github.com/scarletkc/Hatoba/pull/234"
+      }
+    },
+    "repowise-dev/repowise#4532": {
+      "title": "Trace Apex callouts through wrappers",
+      "detail": "Resolved literal endpoints and HTTP methods through same-class helpers, with safeguards for overloads, reassigned parameters, and unrelated receivers."
+    },
+    "repowise-dev/repowise#4553": {
+      "title": "Recognize shared include files accurately",
+      "detail": "Stopped PL/I, Pascal, and PHP include members being mistaken for C++, preserving Abseil fragments and preventing false dead-code findings."
+    }
+  }
+}
