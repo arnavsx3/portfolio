@@ -6,6 +6,8 @@ on:
   pull_request:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    - cron: '17 */6 * * *'
 
 permissions:
   contents: read
@@ -24,7 +26,14 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      - name: Refresh verified public contributions
+        if: (github.ref == 'refs/heads/main' && github.event_name != 'pull_request') || github.event_name == 'workflow_dispatch'
+        run: npm run sync:contributions
+        env:
+          GH_TOKEN: ${{ github.token }}
       - run: npm run format:check
+      - run: npm run lint
+      - run: npm test
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'

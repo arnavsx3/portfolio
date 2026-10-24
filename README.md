@@ -28,7 +28,10 @@ npm run format:check  # Verify formatting without changing files
 - `src/data/profiles.ts`: email and social links.
 - `src/components/Signal.tsx`: interactive delivery / platform / observability architecture sketch.
 - `src/components/ProjectVisual.tsx`: original SVG and CSS illustrations of project concepts, rather than screenshots or live telemetry.
-- `src/data/contributions.ts`: verified upstream pull requests, summaries, and merge status. Refresh the recorded verification date when updating these entries.
+- `src/data/contributions.generated.json`: a verified snapshot of public merged PRs, merge dates, and authorship. Bundled with the site; no browser API calls.
+- `contributions.config.json`: optional project names and descriptions, friendly PR titles/summaries, and links to original PRs. These entries also seed discovery, but GitHub still verifies every merge and contribution credit.
+- `src/data/contributions.ts`: combines the verified snapshot with optional editorial copy. New repositories and PRs render without adding a component or hand-written card.
+- `scripts/sync-contributions.mjs`: refreshes the snapshot from GitHub during scheduled and main-branch builds.
 - `src/components/Projects.tsx`: accessible featured / open-source / archive tabs.
 - `src/data/certifications.ts`: AWS credential records and original certificate links supplied in Arnav's resume.
 - `src/components/Certifications.tsx`: a credential gallery, with an honest pending state when no records exist.
@@ -43,9 +46,36 @@ Semantic landmarks, a skip link, keyboard-operable tabs with Arrow/Home/End navi
 
 ## Publishing
 
-GitHub Actions checks formatting and builds pull requests. Pushes to `main` (or a manual workflow run on `main`) build and publish to the existing GitHub Pages site. The `/portfolio/` base is configured in `vite.config.ts`; update the Vite base and canonical/social URLs together if the hosting path changes.
+GitHub Actions checks formatting, lint, sync tests, and production builds on pull requests. Pushes to `main` (or a manual workflow run on `main`) build and publish to the existing GitHub Pages site. The `/portfolio/` base is configured in `vite.config.ts`; update the Vite base and canonical/social URLs together if the hosting path changes.
 
 Use focused commits on a feature branch and open a pull request into `main`. Preview changes locally before merging.
+
+## Automatic open-source contributions
+
+Each upstream project shows its newest merged contribution, with a keyboard-accessible **See all contributions** control for its full set of cards. Counts, merge dates, and the verification date come from the snapshot; Repowise's four merged PRs are included. The original Hatoba #234 link remains attached to its merged, co-authored landing PR #242 and is not counted twice.
+
+The existing Pages workflow refreshes and deploys contributions every six hours (at 00:17, 06:17, 12:17, and 18:17 UTC), on pushes to `main`, and on manual runs. It discovers authored merged PRs across public upstream repositories, so a first contribution to a new project creates a project entry automatically. Only public merged PRs outside this account's own repositories qualify.
+
+Co-authored work is discovered from authored commits and indexed `Co-authored-by` trailers, including verified public email aliases used on previous commits. Candidates count only when GitHub's commit-author records link the contribution to this account and its associated PR is merged. A mention in a title or message is insufficient. Emails are used only in memory for discovery and are never published in the snapshot.
+
+Discovery depends on GitHub's search index and credit attribution. If a co-authored landing PR uses an identity search cannot discover, add its `owner/repo#number` to `pullRequests` in the config; the sync verifies its commit authors before publishing it. This is also how original-PR links and hand-written summaries are preserved. New entries without editorial copy use their actual upstream PR title and merge date.
+
+To refresh locally:
+
+```sh
+gh auth login                 # or supply GH_TOKEN / GITHUB_TOKEN
+npm run sync:contributions
+npm test
+npm run lint
+npm run format:check
+npm run build
+```
+
+The workflow uses its existing read-only `GITHUB_TOKEN`; no personal access token, repository-write permission, or browser secret is required. PR builds use the committed snapshot and do not receive a sync token. Scheduled refreshes update the build artifact rather than making recurring bot commits. The checked-in JSON is an offline development baseline; the deployed site can be newer.
+
+For an end-to-end verification before publishing, manually run the workflow on a feature branch: it refreshes and validates with the Actions token, while only runs on `main` upload a Pages artifact and deploy.
+
+If GitHub is unavailable, rate-limited, or returns incomplete results, sync fails before replacing the snapshot and the last successful deployment remains live. Search sets larger than GitHub's 1,000-result limit fail explicitly rather than silently dropping older work. Scheduled runs may be delayed by GitHub; public repositories can have schedules disabled after 60 days without repository activity, in which case re-enable the workflow in Actions. Updates are periodic, not instant webhooks from upstream repositories.
 
 ## Adding credentials
 

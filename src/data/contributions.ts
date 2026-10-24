@@ -1,105 +1,113 @@
+import config from '../../contributions.config.json'
+import snapshot from './contributions.generated.json'
+
 export interface Contribution {
   number: number
   title: string
-  detail: string
-  status: 'Merged' | 'Closed · not merged'
+  detail?: string
+  status: 'Merged'
   url: string
-  coauthored?: boolean
+  mergedAt: string
+  coauthored: boolean
   originalPullRequest?: { number: number; url: string }
 }
+
 export interface OpenSourceProject {
+  repository: string
   name: string
   scope: string
   description: string
   url: string
-  fork: string
+  fork?: string
   contributions: Contribution[]
 }
 
-// Public upstream PRs checked on 2026-10-20. Refresh deliberately so status and
-// attribution remain accurate, without unauthenticated runtime GitHub API calls.
-export const openSourceProjects: OpenSourceProject[] = [
-  {
-    name: 'Repowise',
-    scope: 'Codebase intelligence',
-    description:
-      'Making workspace updates and security history scans more reliable.',
-    url: 'https://github.com/repowise-dev/repowise',
-    fork: 'https://github.com/arnavsx3/repowise',
-    contributions: [
-      {
-        number: 4107,
-        title: 'Workspace failures & cancellation',
-        detail:
-          'Preserved repository aliases in errors, propagated cancellation, and covered cleanup and callback failures with regression tests.',
-        status: 'Merged',
-        url: 'https://github.com/repowise-dev/repowise/pull/4107',
-      },
-      {
-        number: 3631,
-        title: 'Deduplicate historical secret findings',
-        detail:
-          'Stopped unchanged secrets being reported again across file versions while retaining their earliest known introduction.',
-        status: 'Merged',
-        url: 'https://github.com/repowise-dev/repowise/pull/3631',
-      },
-    ],
-  },
-  {
-    name: 'Backlot',
-    scope: 'API emulation / AWS S3',
-    description:
-      'Bringing S3 request validation closer to measured AWS behavior.',
-    url: 'https://github.com/brekkylab/backlot',
-    fork: 'https://github.com/arnavsx3/backlot',
-    contributions: [
-      {
-        number: 733,
-        title: 'Signature requirements for annotation writes',
-        detail:
-          'Rejected unsigned and Signature V2 annotation writes, preserving selector and credential error precedence.',
-        status: 'Merged',
-        url: 'https://github.com/brekkylab/backlot/pull/733',
-      },
-      {
-        number: 685,
-        title: 'Query validation before CORS preflight',
-        detail:
-          'Aligned OPTIONS selector refusals with S3 behavior and added regression cases for bucket and object request paths.',
-        status: 'Merged',
-        url: 'https://github.com/brekkylab/backlot/pull/685',
-      },
-    ],
-  },
-  {
-    name: 'Hatoba',
-    scope: 'Desktop SSH / developer experience',
-    description:
-      'Contributing to the desktop experience and terminal input tooling.',
-    url: 'https://github.com/scarletkc/Hatoba',
-    fork: 'https://github.com/arnavsx3/Hatoba',
-    contributions: [
-      {
-        number: 178,
-        title: 'Update progress layout',
-        detail:
-          'Removed the progress-track width cap so it fills the available text column; checked responsive layouts, themes, and locales.',
-        status: 'Merged',
-        url: 'https://github.com/scarletkc/Hatoba/pull/178',
-      },
-      {
-        number: 242,
-        title: 'Ordered terminal-key input',
-        detail:
-          'Co-authored the merged terminal-key work: parsing, xterm-compatible encoding, whole-sequence validation, Auto-mode checks, and Windows ConPTY coverage. Originated in my PR #234 and landed through #242.',
-        status: 'Merged',
-        coauthored: true,
-        url: 'https://github.com/scarletkc/Hatoba/pull/242',
-        originalPullRequest: {
-          number: 234,
-          url: 'https://github.com/scarletkc/Hatoba/pull/234',
-        },
-      },
-    ],
-  },
-]
+interface Editorial {
+  projects: Record<
+    string,
+    { name: string; scope: string; description: string; fork?: string }
+  >
+  pullRequests: Record<
+    string,
+    {
+      title: string
+      detail: string
+      originalPullRequest?: { number: number; url: string }
+    }
+  >
+}
+
+interface ContributionSnapshot {
+  syncedAt: string
+  projects: {
+    repository: string
+    name: string
+    description: string
+    language: string
+    url: string
+    fork?: string
+    contributions: Omit<
+      Contribution,
+      'status' | 'detail' | 'originalPullRequest'
+    >[]
+  }[]
+}
+
+const editorial = config as Editorial
+const projectOrder = Object.keys(editorial.projects).map((name) =>
+  name.toLowerCase(),
+)
+const projectCopy = new Map(
+  Object.entries(editorial.projects).map(([key, value]) => [
+    key.toLowerCase(),
+    value,
+  ]),
+)
+const pullCopy = new Map(
+  Object.entries(editorial.pullRequests).map(([key, value]) => [
+    key.toLowerCase(),
+    value,
+  ]),
+)
+
+// GitHub supplies status and credit; optional editorial copy only supplies prose.
+// The browser reads this bundled snapshot, never a GitHub token or live API.
+const verified = snapshot as ContributionSnapshot
+export const contributionsSyncedAt = verified.syncedAt
+export const openSourceProjects: OpenSourceProject[] = verified.projects
+  .map((project) => {
+    const copy = projectCopy.get(project.repository.toLowerCase())
+    return {
+      ...project,
+      name: copy?.name ?? project.name,
+      description: copy?.description ?? project.description,
+      fork: copy?.fork ?? project.fork,
+      scope:
+        copy?.scope ??
+        (project.language
+          ? `${project.language} / Open source`
+          : 'Open source'),
+      contributions: project.contributions.map((pr) => {
+        const prose = pullCopy.get(
+          `${project.repository}#${pr.number}`.toLowerCase(),
+        )
+        return {
+          ...pr,
+          title: prose?.title ?? pr.title,
+          detail: prose?.detail,
+          originalPullRequest: prose?.originalPullRequest,
+          status: 'Merged' as const,
+        }
+      }),
+    }
+  })
+  .sort((a, b) => {
+    const rank = (name: string) => {
+      const index = projectOrder.indexOf(name.toLowerCase())
+      return index < 0 ? projectOrder.length : index
+    }
+    return (
+      rank(a.repository) - rank(b.repository) ||
+      a.repository.localeCompare(b.repository)
+    )
+  })

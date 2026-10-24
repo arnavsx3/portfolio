@@ -1,0 +1,92 @@
+{
+  "username": "arnavsx3",
+  "syncedAt": "2026-10-24T07:00:35.471Z",
+  "projects": [
+    {
+      "repository": "brekkylab/backlot",
+      "name": "backlot",
+      "description": "A local emulator for enterprise SaaS APIs — Slack, Gmail, Google Drive, GitHub, Jira, Notion, S3 and more — with the real response shapes, pagination, auth and per-document ACLs, over a corpus you supply.",
+      "language": "Python",
+      "url": "https://github.com/brekkylab/backlot",
+      "contributions": [
+        {
+          "number": 733,
+          "title": "s3: annotation writes reject unsigned and Signature Version 2 credentials",
+          "url": "https://github.com/brekkylab/backlot/pull/733",
+          "mergedAt": "2026-10-15T19:58:05Z",
+          "coauthored": false
+        },
+        {
+          "number": 685,
+          "title": "s3: OPTIONS rejects invalid query selectors before CORS preflight",
+          "url": "https://github.com/brekkylab/backlot/pull/685",
+          "mergedAt": "2026-10-13T11:40:47Z",
+          "coauthored": false
+        }
+      ],
+      "fork": "https://github.com/arnavsx3/backlot"
+    },
+    {
+      "repository": "repowise-dev/repowise",
+      "name": "repowise",
+      "description": "Codebase intelligence for AI and humans: code health scores, auto-generated docs, git analytics, dead code detection, and architectural decisions via MCP.",
+      "language": "Python",
+      "url": "https://github.com/repowise-dev/repowise",
+      "contributions": [
+        {
+          "number": 4532,
+          "title": "fix(workspace): trace Apex callouts through wrapper methods",
+          "url": "https://github.com/repowise-dev/repowise/pull/4532",
+          "mergedAt": "2026-10-24T05:48:21Z",
+          "coauthored": false
+        },
+        {
+          "number": 4553,
+          "title": "fix(ingestion): stop indexing PL/I .inc members as C++",
+          "url": "https://github.com/repowise-dev/repowise/pull/4553",
+          "mergedAt": "2026-10-24T05:48:13Z",
+          "coauthored": false
+        },
+        {
+          "number": 4107,
+          "title": "fix(workspace): preserve repo aliases and propagate cancellation",
+          "url": "https://github.com/repowise-dev/repowise/pull/4107",
+          "mergedAt": "2026-10-19T05:20:10Z",
+          "coauthored": false
+        },
+        {
+          "number": 3631,
+          "title": "fix(security): deduplicate history findings across file versions",
+          "url": "https://github.com/repowise-dev/repowise/pull/3631",
+          "mergedAt": "2026-10-15T11:52:26Z",
+          "coauthored": false
+        }
+      ],
+      "fork": "https://github.com/arnavsx3/repowise"
+    },
+    {
+      "repository": "scarletkc/Hatoba",
+      "name": "Hatoba",
+      "description": "Open-source desktop SSH client with an AI assistant and end-to-end encrypted sync through your own Cloudflare account",
+      "language": "Rust",
+      "url": "https://github.com/scarletkc/Hatoba",
+      "contributions": [
+        {
+          "number": 242,
+          "title": "fix(ai): let send_input press Ctrl+X and other keys in order",
+          "url": "https://github.com/scarletkc/Hatoba/pull/242",
+          "mergedAt": "2026-10-17T11:54:58Z",
+          "coauthored": true
+        },
+        {
+          "number": 178,
+          "title": "fix(desktop): expand the update progress bar",
+          "url": "https://github.com/scarletkc/Hatoba/pull/178",
+          "mergedAt": "2026-10-13T03:27:43Z",
+          "coauthored": false
+        }
+      ],
+      "fork": "https://github.com/arnavsx3/Hatoba"
+    }
+  ]
+}
