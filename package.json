@@ -11,7 +11,9 @@
     "sync:contributions": "node scripts/sync-contributions.mjs",
     "preview": "vite preview",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "sync:projects": "node scripts/sync-projects.mjs",
+    "sync:github": "npm run sync:projects && npm run sync:contributions"
   },
   "dependencies": {
     "react": "^19.2.8",

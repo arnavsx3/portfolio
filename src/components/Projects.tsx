@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { projects, otherProjects } from '../data/projects'
+import { projects, otherProjects, projectsSyncedAt } from '../data/projects'
 import { openSourceProjects } from '../data/contributions'
 import Icon from './Icon'
 import ProjectVisual from './ProjectVisual'
@@ -88,7 +88,7 @@ export default function Projects({
             (tab.id === 'featured' ? (
               <>
                 <div className="work-panel-note mono">
-                  <span>SIX SELECTED BUILDS</span>
+                  <span>{projects.length} SELECTED BUILDS</span>
                   <span>CLOUD INFRASTRUCTURE / SYSTEMS / DEVELOPER TOOLS</span>
                 </div>
                 <div className="project-grid">
@@ -155,7 +155,7 @@ export default function Projects({
                     <a
                       className="archive-project"
                       key={project.repo}
-                      href={`https://github.com/arnavsx3/${project.repo}`}
+                      href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -173,17 +173,28 @@ export default function Projects({
                     </a>
                   ))}
                 </div>
-                <button
-                  className="archive-expand"
-                  aria-expanded={expanded}
-                  aria-controls="project-archive"
-                  onClick={() => setExpanded((value) => !value)}
-                >
-                  {expanded
-                    ? 'Show fewer projects'
-                    : `Explore all ${otherProjects.length} projects`}
-                  <Icon name={expanded ? 'down' : 'plus'} />
-                </button>
+                {otherProjects.length > 6 && (
+                  <button
+                    className="archive-expand"
+                    aria-expanded={expanded}
+                    aria-controls="project-archive"
+                    onClick={() => setExpanded((value) => !value)}
+                  >
+                    {expanded
+                      ? 'Show fewer projects'
+                      : `Explore all ${otherProjects.length} projects`}
+                    <Icon name={expanded ? 'down' : 'plus'} />
+                  </button>
+                )}
+                <p className="contribution-note mono">
+                  PROJECTS SYNCED{' '}
+                  {new Date(projectsSyncedAt).toLocaleDateString('en', {
+                    month: 'long',
+                    day: 'numeric',
+                    year: 'numeric',
+                    timeZone: 'UTC',
+                  })}
+                </p>
               </>
             ))}
         </div>

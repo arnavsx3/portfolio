@@ -1,0 +1,68 @@
+{
+  "username": "arnavsx3",
+  "featuredLimit": 6,
+  "exclude": ["portfolio", "arnavsx3"],
+  "includeForks": ["django-notes-app"],
+  "featured": [
+    {
+      "repo": "cassian",
+      "title": "Cassian",
+      "category": "Cloud infrastructure",
+      "description": "A self-healing batch platform on AWS Spot. Checkpointed jobs recover on EKS, with On-Demand fallback when interruption limits are reached.",
+      "visual": "cassian",
+      "note": "Spot capacity. Durable progress. Observable recovery.",
+      "stack": ["EKS", "Terraform", "Jenkins", "Argo CD", "Prometheus"],
+      "private": true
+    },
+    {
+      "repo": "synapse",
+      "title": "Synapse",
+      "category": "Cloud-native delivery",
+      "description": "A document-grounded chat workspace, shipped through GitHub Actions, ECR, and Helm to EKS with asynchronous workers and autoscaling.",
+      "visual": "synapse",
+      "note": "From a commit to a running workload.",
+      "stack": ["EKS", "Helm", "GitHub Actions", "Redis", "Next.js"],
+      "private": true
+    },
+    {
+      "repo": "morlana",
+      "title": "Morlana",
+      "category": "Systems tooling",
+      "description": "Recoverable folder history in C++. Content-addressed snapshots, bounded parallel capture, and integrity-checked restores for local files.",
+      "visual": "snapshots",
+      "note": "Capture. Verify. Restore with confidence.",
+      "stack": ["C++17", "Linux", "SHA-256", "CMake"],
+      "private": true
+    },
+    {
+      "repo": "kessel",
+      "title": "Kessel",
+      "category": "Distributed workloads",
+      "description": "F1 counterfactuals as a Kubernetes workload. A FastAPI control plane dispatches reproducible parallel simulations and aggregates the results.",
+      "visual": "kessel",
+      "note": "Parallel workers. Reproducible outcomes.",
+      "stack": ["Python", "Kubernetes Jobs", "MinIO", "PostgreSQL"],
+      "private": false
+    },
+    {
+      "repo": "logfold",
+      "title": "logfold",
+      "category": "Developer tooling",
+      "description": "Less log noise, more signal. A Rust CLI that normalizes changing values and folds repetitive lines into counted patterns.",
+      "visual": "logs",
+      "note": "Find the pattern in the noise.",
+      "stack": ["Rust", "CLI", "Pattern matching"],
+      "private": false
+    },
+    {
+      "repo": "table-lyft",
+      "title": "table-lyft",
+      "category": "Local-first tooling",
+      "description": "A browser extension that turns loaded HTML tables into reusable data: pick, preview, filter, and export to CSV, Markdown, or the clipboard.",
+      "visual": "tables",
+      "note": "From web table to something useful.",
+      "stack": ["TypeScript", "React", "WXT", "Manifest V3"],
+      "private": false
+    }
+  ]
+}
